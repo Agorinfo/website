@@ -228,6 +228,7 @@ export type HeroPageType = {
                     {
                         url: string;
                         alternativeText: string;
+                        formats: { small: { url: string; }; };
                     };
             }[];
     };
@@ -288,6 +289,7 @@ export type HeroArchiveType = {
                             attributes: {
                                 url: string;
                                 alternativeText: string;
+                                formats: { small: { url: string; }; };
                             }
                         }
                     }
@@ -297,6 +299,7 @@ export type HeroArchiveType = {
                         attributes: {
                             url: string;
                             alternativeText: string;
+                            formats: { small: { url: string; }; };
                         }
                     }
                 }
