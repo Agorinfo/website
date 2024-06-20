@@ -15,6 +15,11 @@ type SolutionCardType = {
             attributes: {
                 url: string,
                 alternativeText: string,
+                formats: {
+                    small: {
+                        url: string;
+                    }
+                }
             }
         }
     }
@@ -52,7 +57,7 @@ const Solutions = () => {
                         <SolutionCard
                             key={item.id}
                             url={item.url}
-                            image={item.image.data ? backUrl + item.image.data.attributes.url : emptyImg.src}
+                            image={item.image.data ? backUrl + item.image.data.attributes.formats.small.url : emptyImg.src}
                             alt={item.image.data ? item.image.data.attributes.alternativeText : ""}
                             category={item.title}
                             solution={item.label}

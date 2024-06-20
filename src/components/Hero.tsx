@@ -13,7 +13,7 @@ const Hero = ({images, teaser, content, label1, url1, label2, url2}: HeroHomeTyp
 
     return (
         <>
-            <div className="bg-featured-shine py-12 full-width">
+            <div className="bg-featured-shine py-12 full-width h-hero">
                 <section
                     className="mt-8 pb-6 sm:pb-20 lg:pb-12 lg:h-hero grid lg:grid-cols-2 gap-16 md:gap-[1.729vw] lg:flex-row">
                     <Content
@@ -26,7 +26,7 @@ const Hero = ({images, teaser, content, label1, url1, label2, url2}: HeroHomeTyp
                         headingClassName="[&>em]:text-featured [&>em]:not-italic"
                         btn1ClassName="btn-accent"
                     />
-                    {images && images.data ?
+                    {images && images.data.length ?
                         screen === "desktop" && <Slider images={images.data}/>
                         :
                         screen === "desktop" &&

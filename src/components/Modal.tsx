@@ -65,7 +65,7 @@ const Modal = () => {
                 <>
                     <motion.div
                         key="overlay"
-                        className={`fixed inset-0 w-full  bg-black/50 z-[99] backdrop-blur-sm ${isOpen ? 'block' : "hidden"}`}
+                        className={`fixed inset-0 w-full  bg-black/50 z-[9999] backdrop-blur-sm ${isOpen ? 'block' : "hidden"}`}
                         onClick={closeModal}
                         variants={backdrop}
                         initial="hidden"
@@ -73,7 +73,7 @@ const Modal = () => {
                         exit="hidden"
                     />
                     <motion.div
-                        className={`fixed w-[100vw] sm:auto h-screen flex justify-center items-end md:items-center z-[999] pointer-events-none`}
+                        className={`fixed w-[100vw] sm:auto h-screen flex justify-center items-end md:items-center z-[99999] pointer-events-none`}
                         layoutId="modal-ccontainer"
                         variants={modal}
                         initial="hidden"

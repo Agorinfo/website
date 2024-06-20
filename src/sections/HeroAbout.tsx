@@ -21,7 +21,7 @@ const HeroAbout = () => {
             <Hero
                 teaser={data.heroContent.teaser}
                 content={data.heroContent.content}
-                images={data.heroContent.images}
+                images={data.images}
                 label1={data.heroContent.label1}
                 url1={data.heroContent.url1}
                 label2={data.heroContent.label2}

@@ -14,7 +14,7 @@ import emptyImg from "@/assets/empty-img.png"
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
-    const{data, error, isLoading} = useQuery({
+    const {data, error, isLoading} = useQuery({
         queryKey: ["menu"],
         queryFn: getMenu
     });
@@ -25,17 +25,21 @@ const Header = () => {
     })
 
     const logo = global.data?.logo.data.attributes.url
-    if(isLoading) return  <Loader />
+    if (isLoading) return <Loader/>
 
-    if(error) return <p>{error.message}</p>
+    if (error) return <p>{error.message}</p>
 
     return (
-        <header className="border-b border-greyscale-lightest bg-white shadow-nav overflow-x-clip">
-            <div className="flex items-center justify-between py-6 relative max-w-screen-xl mx-auto px-4 md:px-8 xl:px-0">
-                <Link className="w-[130px]" href="/"><img className="w-full h-full object-contain" src={logo ? backUrl + logo : emptyImg.src} alt="Agorinfo"/></Link>
-                <Nav navItems={data.navItems} isOpen={isOpen} setIsOpen={setIsOpen} />
+        <header
+            className="sticky top-0 bg-white z-[999] border-b border-greyscale-lightest shadow-nav overflow-x-hidden lg:overflow-x-visible">
+            <div
+                className="flex items-center justify-between py-6 relative max-w-screen-xl mx-auto px-4 md:px-8 xl:px-0">
+                <Link className="w-[200px]" href="/"><img className="w-full h-full object-contain"
+                                                          src={logo ? backUrl + logo : emptyImg.src}
+                                                          alt="WeNégoce"/></Link>
+                <Nav navItems={data.navItems} isOpen={isOpen} setIsOpen={setIsOpen}/>
                 <ModalButton label={"Nous contacter"} className="btn btn-accent hidden lg:inline-flex">
-                    <ContactForm />
+                    <ContactForm/>
                 </ModalButton>
                 <Button type="button" label={"Menu"} onClick={() => setIsOpen(true)} className="btn-menu" burger/>
             </div>

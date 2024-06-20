@@ -2,91 +2,49 @@
 import React, {useState} from 'react';
 import {useQuery} from "@tanstack/react-query";
 import getGlobal from "@/actions/getGlobal";
-import Loader from "@/components/Loader";
+import Loader, {LoaderButton} from "@/components/Loader";
 import Button from "@/components/Button";
 import toast from "react-hot-toast";
 import {sendMail} from "@/utils/sendEmail";
 import send from "@/actions/SendEmail";
+import useModalStore from "@/store/ModalStore";
 
 const ContactForm = () => {
     const url = process.env.NEXT_PUBLIC_FRONT_URL;
     const [active, setActive] = useState("formulaire");
-    const [contact, setContact] = useState({
-        firstname: "",
-        name: "",
-        company:"",
-        email: "",
-        tel: "",
-        object: "",
-        message: ""
-    });
+    const { closeModal } = useModalStore();
+    const [loading, setLoading] = useState(false);
 
-    const handleChange = (e: any) => {
-        const {name, value, type, checked} = e.target;
-        setContact({
-            ...contact,
-            [name]: type === 'checkbox' ? checked : value,
-        });
+    async function handleSubmit(event: any) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        try {
+            setLoading(true);
+            const response = await fetch('/api/send-contact', {
+                method: 'post',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                toast.error("Une erreur est survenue !");
+                throw new Error(`response status: ${response.status}`);
+            }
+
+            const responseData = await response.json();
+            if (responseData.status === 500) {
+                toast.error(responseData.message);
+            } else {
+                toast.success("Message envoyé !");
+                event.target.reset();
+                closeModal();
+            }
+        } catch (err) {
+            toast.error("Une erreur est survenue !");
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
     };
-
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(contact)
-    };
-
-    // const handleSubmit = async (e: any) => {
-    //     e.preventDefault();
-    //     try {
-    //         const response = await fetch(`${url}/api/send-contact`, options)
-    //             .then((res) => res.json());
-    //         toast.success("Message envoyé !")
-    //     } catch (error) {
-    //         toast.error("Une erreur est survenu, réessayez ultérieurement...")
-    //     } finally {
-    //         setContact({
-    //             firstname: "",
-    //             name: "",
-    //             company:"",
-    //             email: "",
-    //             tel: "",
-    //             object: "",
-    //             message: ""
-    //         });
-    //     }
-    // };
-
-    // async function handleSubmit(event: any) {
-    //
-    //     event.preventDefault();
-    //     const formData = new FormData(event.target)
-    //     try {
-    //
-    //         const response = await fetch('/api/send-contact', {
-    //             method: 'post',
-    //             body: formData,
-    //         });
-    //
-    //         if (!response.ok) {
-    //             console.log("falling over")
-    //             throw new Error(`response status: ${response.status}`);
-    //         }
-    //         const responseData = await response.json();
-    //         console.log(responseData['message'])
-    //         toast.success("Message envoyé !")
-    //         // alert('Message successfully sent');
-    //     } catch (err) {
-    //         console.error(err);
-    //         toast.error("Une erreur est survenue")
-    //         // alert("Error, please try resubmitting the form");
-    //     } finally {
-    //         event.target.reset();
-    //     }
-    // };
-     const handleSubmit = (e: any) => {
-         send("Test Mail", `
-        <h1>Hello World</h1>
-    `)
-     }
 
     const {data, isLoading, error} = useQuery({
         queryKey: ["global"],
@@ -145,16 +103,14 @@ const ContactForm = () => {
             </div>
             <div className={`p-8 lg:w-[50vw] max-w-[48rem] ${active === "formulaire" ? "block" : "hidden lg:block"}`}>
                 <h2 className="text-h3 font-bold capitalize pb-6 hidden lg:block">Contacter {siteName}</h2>
-                <form className="grid sm:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-4">
                     <label className="label-style" htmlFor="firstname">
                         Prénom *
                         <input
                             type="text"
                             name="firstname"
                             id="firstname"
-                            value={contact.firstname}
                             className="input-style"
-                            onChange={handleChange}
                             required
                         />
                     </label>
@@ -164,9 +120,7 @@ const ContactForm = () => {
                             type="text"
                             name="name"
                             id="name"
-                            value={contact.name}
                             className="input-style"
-                            onChange={handleChange}
                             required
                         />
                     </label>
@@ -176,9 +130,7 @@ const ContactForm = () => {
                             type="text"
                             name="company"
                             id="company"
-                            value={contact.company}
                             className="input-style"
-                            onChange={handleChange}
                         />
                     </label>
                     <label className="label-style" htmlFor="email">
@@ -187,9 +139,7 @@ const ContactForm = () => {
                             type="email"
                             name="email"
                             id="email"
-                            value={contact.email}
                             className="input-style"
-                            onChange={handleChange}
                             required
                         />
                     </label>
@@ -199,9 +149,7 @@ const ContactForm = () => {
                             type="tel"
                             name="tel"
                             id="tel"
-                            value={contact.tel}
                             className="input-style"
-                            onChange={handleChange}
                             required
                         />
                     </label>
@@ -216,7 +164,6 @@ const ContactForm = () => {
                                     value="Être recontacté"
                                     className="radio-style"
                                     defaultChecked
-                                    onChange={handleChange}
                                 />
                                 Être recontacté
                             </label>
@@ -227,7 +174,6 @@ const ContactForm = () => {
                                     name="civility"
                                     value="Réserver une démo"
                                     className="radio-style"
-                                    onChange={handleChange}
                                 />
                                 Réserver une démo
                             </label>
@@ -238,7 +184,6 @@ const ContactForm = () => {
                                     name="civility"
                                     value="Autre demande"
                                     className="radio-style"
-                                    onChange={handleChange}
                                 />
                                 Autre demande
                             </label>
@@ -250,14 +195,12 @@ const ContactForm = () => {
                             className="input-style resize-none h-32"
                             name="message"
                             id="message"
-                            value={contact.message}
-                            onChange={handleChange}
                             required
                         >
                             </textarea>
                     </label>
                     <div className="flex items-center justify-between col-span-full">
-                        <button className="btn btn-accent mb-4" type={"submit"} formAction={handleSubmit}>Envoyer</button>
+                        <button className="btn btn-accent mb-4" type={"submit"}> {loading ? <LoaderButton /> : "Envoyer"}</button>
                         <span className={"text-sm text-grayscale-darker"}>* Obligatoire</span>
                     </div>
                     <p className="text-sm text-grayscale-darker col-span-full">En envoyant ce message, vous acceptez

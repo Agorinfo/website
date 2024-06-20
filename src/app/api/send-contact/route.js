@@ -18,13 +18,11 @@ export async function POST(request) {
     const message = formData.get('message');
 
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        // host: SMTP_HOST,
-        // port: SMTP_PORT,
-        // protocol: SMTP_PROTOCOLE,
-        secure: true,
+        host: SMTP_HOST,
+        port: parseInt(SMTP_PORT, 10),
+        secure: SMTP_PORT == '587',
         auth: {
-            user: "agorinfo@agorinfo.fr",
+            user: "no-reply@agorinfo.fr",
             pass: "6zbzV057#8Gug6t83^"
         },
     });
@@ -53,10 +51,10 @@ export async function POST(request) {
             `,
         })
 
-        return NextResponse.json({ message: "L'email a été envoyé avec succès" })
+        return NextResponse.json({ message: "L'email a été envoyé avec succès" }, { status: 200 });
 
     } catch (error) {
-        console.log(error)
-        return NextResponse.json({ status: 500, message: "L'email n'a pas pu être envoyé" })
+        console.error(error);
+        return NextResponse.json({ status: 500, message: "L'email n'a pas pu être envoyé" }, { status: 500 });
     }
 }

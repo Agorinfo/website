@@ -208,6 +208,7 @@ export type HeroHomeType = {
                     {
                         url: string;
                         alternativeText: string;
+                        formats: { small: { url: string; }; };
                     };
             }[];
     };
@@ -258,7 +259,7 @@ export type HeroArchiveType = {
         attributes: {
             slug: string;
             brandColor: string;
-            heroArchive:{
+            heroArchive: {
                 id: number;
                 teaser: string;
                 title: string;
@@ -315,7 +316,7 @@ export type HeroArchiveServiceType = {
             slug: string;
             brandColor: string;
             badgeColor: string
-            heroArchive:{
+            heroArchive: {
                 id: number;
                 teaser: string;
                 title: string;

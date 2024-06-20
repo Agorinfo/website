@@ -13,6 +13,11 @@ type ImagesTypes = {
         attributes: {
             url: string;
             alternativeText: string;
+            formats: {
+                small: {
+                    url: string;
+                }
+            }
         }
     }[],
     logo?: {
@@ -101,7 +106,7 @@ const Slider = ({images, logo}: ImagesTypes) => {
                                     exit={{opacity: 0}}
                                     transition={{duration: 0.7}}
                                     className="w-full h-full object-cover"
-                                    src={images ? backUrl + images[index].attributes.url : emptyImg.src}
+                                    src={images ? images[index].attributes.formats ? backUrl + images[index].attributes.formats.small.url : backUrl + images[index].attributes.url : emptyImg.src}
                                     alt={images ? images[index].attributes.alternativeText : ""}/>
                             </div>
                             <span
@@ -126,7 +131,9 @@ const Slider = ({images, logo}: ImagesTypes) => {
                     }
                 </div>
                 <button
-                    className={clsx("absolute top-1/2 left-0 -translate-y-1/2 z-40 size-12 text-featured",
+                    type="button"
+                    aria-label={"prev slide"}
+                    className={clsx("absolute top-1/2 left-0 -translate-y-1/2 z-40 size-12 text-featured-muted",
                         index === 0 && "hidden",
                         !images && "hidden"
                     )}
@@ -135,7 +142,9 @@ const Slider = ({images, logo}: ImagesTypes) => {
                     <ArrowLeft size={48}/>
                 </button>
                 <button
-                    className={clsx("absolute top-1/2 right-0 -translate-y-1/2 z-40 size-12 text-featured",
+                    type="button"
+                    aria-label={"next slide"}
+                    className={clsx("absolute top-1/2 right-0 -translate-y-1/2 z-40 size-12 text-featured-muted",
                         index === images?.length - 1 && "hidden",
                         !images && "hidden"
                     )}
@@ -207,7 +216,7 @@ export const SliderLandscape = ({images}: ImagesTypes) => {
                                     className="relative z-10 bg-white p-3 max-w-[34rem] w-full lg:w-[36.259vw] max-h-[27rem] aspect-[4/3] md:aspect-[3/2] rounded-[1rem]">
                                     <img
                                         className="w-full h-full object-cover"
-                                        src={backUrl + item.attributes.url}
+                                        src={item.attributes.formats && item.attributes.formats.small ? backUrl + item.attributes.formats.small.url : backUrl + item.attributes.url}
                                         alt={item.attributes.alternativeText ? item.attributes.alternativeText : ""}
                                     />
                                 </div>
@@ -219,9 +228,9 @@ export const SliderLandscape = ({images}: ImagesTypes) => {
                                           name={'poligon'}/>
                                 </span>
                                 <span
-                                        style={transformStyle}
-                                        className="hidden md:block absolute z-10 transition-all duration-700 ease-linear w-[4.5em] lg:w-[6.8125rem] lg:h-[5.9375rem]"
-                                    >
+                                    style={transformStyle}
+                                    className="hidden md:block absolute z-10 transition-all duration-700 ease-linear w-[4.5em] lg:w-[6.8125rem] lg:h-[5.9375rem]"
+                                >
                                     <Icon className="w-full h-full" name={'triangle'}/>
                                 </span>
                             </div>
@@ -233,6 +242,26 @@ export const SliderLandscape = ({images}: ImagesTypes) => {
                         </div>
                     }
                 </div>
+                <button
+                    type="button"
+                    aria-label={"prev slide"}
+                    className={clsx("absolute top-1/2 left-0 -translate-y-1/2 z-40 size-12 text-featured-muted",
+                        index === 0 && "hidden",
+                        !images && "hidden"
+                    )}
+                    onClick={prev}
+                >
+                    <ArrowLeft size={48}/>
+                </button>
+                <button
+                    type="button"
+                    aria-label={"next slide"}
+                    className={clsx("absolute top-1/2 right-0 -translate-y-1/2 z-40 size-12 text-featured-muted",
+                        index === images?.length - 1 && "hidden",
+                        !images && "hidden"
+                    )}
+                    onClick={next}><ArrowRight size={48}/>
+                </button>
             </div>
         </AnimatePresence>
     );
