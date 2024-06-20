@@ -191,6 +191,7 @@ export type ReassuranceType = {
                     {
                         url: string;
                         alternativeText: string;
+                        formats: { small: { url: string; }; };
                     };
             }[];
     };
