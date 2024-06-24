@@ -17,7 +17,7 @@ const CallToAction = ({title, text, headingClassName, buttonClassName}: CallToAc
                     <h3 className={"text-h3 font-bold pb-2 " + headingClassName}>{title}</h3>
                     <p className="paragraph">{text}</p>
                 </div>
-                <ModalButton label="Être recontacter par un conseiller" className={"btn " + buttonClassName}>
+                <ModalButton label="Être recontacté par un conseiller" className={"btn " + buttonClassName}>
                     <ContactForm/>
                 </ModalButton>
             </div>
@@ -183,7 +183,7 @@ export const CallToActionPage = ({title, text, headingClassName, buttonClassName
                     <p className="paragraph pb-6 lg:pb-0">{text}</p>
                 </div>
                 <ModalButton onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} style={btnStyle}
-                             label="Être recontacter par un conseiller" className={clsx("btn ", buttonClassName)}>
+                             label="Être recontacté par un conseiller" className={clsx("btn ", buttonClassName)}>
                     <ContactForm/>
                 </ModalButton>
             </div>

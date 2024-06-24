@@ -204,7 +204,7 @@ const ContactForm = () => {
                         <span className={"text-sm text-grayscale-darker"}>* Obligatoire</span>
                     </div>
                     <p className="text-sm text-grayscale-darker col-span-full">En envoyant ce message, vous acceptez
-                        la <a href="/politique-de-confidentialité">Politique de confidentialité</a>.</p>
+                        la <a href="/politique-de-confidentialite">Politique de confidentialité</a>.</p>
                 </form>
             </div>
         </div>
