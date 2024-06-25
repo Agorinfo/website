@@ -20,13 +20,14 @@ export async function POST(request) {
     const transporter = nodemailer.createTransport({
         host: SMTP_HOST,
         port: parseInt(SMTP_PORT, 10),
-        secure: SMTP_PORT == '587',
+        secure: SMTP_PORT == '465',
         auth: {
             user: "no-reply@agorinfo.fr",
             pass: "6zbzV057#8Gug6t83^"
         },
     });
 
+    console.log("test JCH", transporter)
     try {
         const testResult = await transporter.verify();
         console.log(testResult);
@@ -38,7 +39,7 @@ export async function POST(request) {
 
         const mail = await transporter.sendMail({
             from: SMTP_EMAIL,
-            to: "drfyah@gmail.com", //pour la vérification, renseigner l'email du formulaire
+            to: "agorinfo@agorinfo.fr", //pour la vérification, renseigner l'email du formulaire
             replyTo: email,
             subject: `Demande en provenance de votre site, de: ${firstname} ${name} `,
             html: `
