@@ -19,7 +19,7 @@ export async function POST(
             "visible_to": "7",
             "was_seen": false
         };
-
+        console.log(request);
         try {
             const response = await fetch(`${PIPEDRIVE_API_URL}?api_token=${PIPEDRIVE_API_KEY}`, {
                 method: 'POST',
