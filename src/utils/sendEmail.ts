@@ -7,10 +7,10 @@ export async function sendMail({subject, body}: {
     const {SMTP_EMAIL, SMTP_PASSWORD, FROM_EMAIL, EMAIL, SMTP_HOST,SMTP_PORT,} = process.env;
     const transport = nodemailer.createTransport({
         host: "mail.agorinfo.fr",
-        port: 587,
-        secure: false,
+        port: 465,
+        secure: true,
         auth: {
-            user: "agorinfo@agorinfo.fr",
+            user: "no-reply@agorinfo.fr",
             pass: "6zbzV057#8Gug6t83^",
         },
     });
