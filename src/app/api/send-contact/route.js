@@ -18,12 +18,12 @@ export async function POST(request) {
     const message = formData.get('message');
 
     const transporter = nodemailer.createTransport({
-        host: "mail.agorinfo.fr",
-        port: 465,
+        host: SMTP_HOST,
+        port: SMTP_PORT,
         secure: true,
         auth: {
-            user: "no-reply@agorinfo.fr",
-            pass: "6zbzV057#8Gug6t83^"
+            user: SMTP_EMAIL,
+            pass: SMTP_PASSWORD
         },
     });
 
