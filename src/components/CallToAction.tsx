@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import Button, {ModalButton} from "@/components/Button";
 import {CallToActionPageType, CallToActionType} from "@/utils/types";
 import ContactForm from "@/components/ContactForm";
-import Modal from "@/components/Modal";
 import clsx from "clsx";
 import emptyImg from "@/assets/empty-img.png"
 import toast from "react-hot-toast";

@@ -3,7 +3,7 @@ import getServices from "@/actions/getServices";
 import getSolutions from "@/actions/getSolutions";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = process.env.NEXT_FRONT_URL || 'http://localhost:3000';
+    const baseUrl = process.env.NEXT_PUBLIC_FRONT_URL || 'http://localhost:3000';
 
     // Pages statiques
     const staticPages = ['', 'qui-sommes-nous', 'mentions-legales', 'services', 'solutions'].map(
