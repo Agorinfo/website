@@ -4,13 +4,20 @@ import { NextResponse } from "next/server"
 export async function POST(
     request: Request,
 ) {
-    const {PIPEDRIVE_API_KEY,PIPEDRIVE_API_URL, PERSON_ID } = process.env;
+    const {PIPEDRIVE_API_KEY,PIPEDRIVE_API_URL, ORGANIZATION_ID } = process.env;
 
     if (request.method === 'POST') {
         const {email} = await request.json();
         const data = {
             title: email,
-            person_id: parseInt(PERSON_ID!)
+            organization_id: parseInt(ORGANIZATION_ID!),
+            "value": {
+                "amount": 0,
+                "currency": "EUR"
+            },
+            "expected_close_date": "2030-12-31",
+            "visible_to": "7",
+            "was_seen": false
         };
         console.log(request);
         try {
