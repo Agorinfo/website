@@ -109,7 +109,7 @@ const Nav = ({navItems, isOpen, setIsOpen}: NavItemsType) => {
                                         </div>
                                         <div className="bg-white rounded-lg overflow-clip flex flex-col">
                                             <img className="hidden flex-auto object-cover lg:block"
-                                                 src={item.image.data.attributes.url ? backUrl + item.image.data.attributes.url : emptyImg.src}
+                                                 src={item.image.data ? backUrl + item.image.data.attributes.url : emptyImg.src}
                                                  alt={item.image.data ? item.image.data.attributes.alternativeText : ""}/>
                                             <div className="pb-6 lg:p-3 text-center">
                                                 <Link
