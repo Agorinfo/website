@@ -31,9 +31,11 @@ const FeaturesReleased = ({data, image, colors}: FeatureReleasedProps) => {
     const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
     return (
         <div className="grid lg:grid-cols-2 gap-[9.688vw] py-12">
-            {data.map((item, index) => (
-                <FeatureReleased colors={colors} key={item.id} data={item} index={index}/>
-            ))}
+            <div className="">
+                {data.map((item, index) => (
+                    <FeatureReleased colors={colors} key={item.id} data={item} index={index}/>
+                ))}
+            </div>
             <img
                 src={image ? backUrl + image.data.attributes.url : emptyImg.src}
                 alt={image.data.attributes ? image.data.attributes.alternativeText : ""}

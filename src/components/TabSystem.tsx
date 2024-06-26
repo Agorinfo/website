@@ -76,7 +76,7 @@ const ModuleSystem: React.FC<ModuleSystemProps> = ({modulesData, colors}) => {
                         className="flex justify-between items-center bg-accent-shine border border-grayscale-lighter rounded-lg py-3 px-4 mb-4 lg:hidden text-accent"
                         onClick={() => setOpen(!open)}
                     >
-                        {sortModules[activeModuleIndex]?.attributes.name}
+                        {modulesData[activeModuleIndex]?.attributes.name}
                         <CaretDown size={16}/>
                     </button>
                     <div
@@ -85,7 +85,7 @@ const ModuleSystem: React.FC<ModuleSystemProps> = ({modulesData, colors}) => {
                         role="tablist"
                         aria-label="Liste des modules"
                     >
-                        {sortModules.map((module: ModuleType, index: number) => (
+                        {modulesData.map((module: ModuleType, index: number) => (
                             <Tab
                                 key={"module-tabs-" + module.id}
                                 index={module.id}
@@ -123,7 +123,7 @@ const ModuleSystem: React.FC<ModuleSystemProps> = ({modulesData, colors}) => {
                             transition={{duration: 0.5}}
                             className="flex flex-col gap-8"
                         >
-                            {activeModule?.attributes.features.data.sort((a: any, b: any) => a.id - b.id).map((feature: FeatureType, index: number) => {
+                            {activeModule?.attributes.features.data.map((feature: FeatureType, index: number) => {
                                 const innerTabStyle = {
                                     backgroundColor: activeFeatureIndex === index ? "white" : colors.base,
                                     borderRight: activeFeatureIndex === index ? `8px solid ${colors.base}` : "0 solid transparent",

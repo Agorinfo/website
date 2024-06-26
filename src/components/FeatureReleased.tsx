@@ -105,7 +105,7 @@ interface FeatureReleasedProps {
 const FeatureReleased = ({data, index, colors}: FeatureReleasedProps) => {
     const [open, setOpen] = useState<number | undefined>(0);
     return (
-        <div className="pl-[1.75rem] relative flex flex-col justify-start h-fit">
+        <div className="pl-[1.75rem] relative flex flex-col justify-start h-fit pb-8">
             <div style={{backgroundColor: colors.muted,}} className="absolute h-full w-px left-[1.75rem] top-0"/>
             <LastFeatureReleased
                 version={data.version}
