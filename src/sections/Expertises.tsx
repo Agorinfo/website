@@ -23,7 +23,6 @@ const Expertises = () => {
 
     if (error) return <p>{error.message}</p>;
 
-    // @ts-ignore
     return (
         <section className="pb-6 md:pb-8 lg:pb-12">
             <h2 className="text-h3 font-bold text-center pb-6">{data.expertises.title}</h2>

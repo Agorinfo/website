@@ -3,7 +3,7 @@ import React from 'react';
 import {BlocksRenderer,type BlocksContent} from "@strapi/blocks-react-renderer";
 import Link from "next/link";
 
-const RichText = ({content}: {content: BlocksContent}) => {
+const RichText = ({content, center}: {content: BlocksContent, center?: boolean}) => {
     return (
         <BlocksRenderer
             content={content}
@@ -27,20 +27,20 @@ const RichText = ({content}: {content: BlocksContent}) => {
                         case 1:
                             return(
                                 <h1
-                                    className={"mb-8 font-bold text-h1 leading-normal"}>{children}
+                                    className={`mb-8 font-bold text-h1 leading-normal ${center ? "text-center" : null}`}>{children}
                                 </h1>
                             )
                         case 2:
                             return (
                                 <h2
-                                    className={"pb-8 text-h2 font-bold leading-normal"}>{children}
+                                    className={`pb-8 text-h3 font-bold leading-normal ${center ? "text-center" : null}`}>{children}
                                 </h2>
                             )
                         case 3:
                         case 4:
                         case 5:
                         case 6:
-                            return <h3 className="text-h3 leading-normal">{children}</h3>
+                            return <h3 className={`text-h3 leading-normal ${center ? "text-center" : null}`}>{children}</h3>
                         default:
                             return <h1 className="text-h1 leading-normal">{children}</h1>
                     }

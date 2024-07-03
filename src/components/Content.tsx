@@ -9,7 +9,7 @@ const Content = ({teaser, content, label1, label2, url1, url2, headingClassName,
 
     return (
         <div
-            className="flex flex-col justify-center lg:py-12 lg:text-left xl:py-24">
+            className="flex flex-col justify-center lg:py-12 lg:text-left xl:py-0">
             <p className="mb-4 font-semibold text-accent md:mb-6 md:text-lg xl:text-xl">{teaser}</p>
             <BlocksRenderer
                 content={content}

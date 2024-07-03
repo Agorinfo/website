@@ -13,7 +13,7 @@ const Hero = ({images, teaser, content, label1, url1, label2, url2}: HeroHomeTyp
 
     return (
         <>
-            <div className="bg-featured-shine py-12 full-width h-hero">
+            <div className="bg-featured-shine full-width h-hero">
                 <section
                     className="mt-8 pb-6 sm:pb-20 lg:pb-12 lg:h-hero grid lg:grid-cols-2 gap-16 md:gap-[1.729vw] lg:flex-row">
                     <Content
