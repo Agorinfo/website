@@ -21,7 +21,7 @@ const TestimonialCard = ({
                 content={testimonial}
                 blocks={{
                     paragraph: ({children}) => <p
-                        className="py-16 text-center max-w-[28rem] mx-auto">{children}</p>,
+                        className="py-8 text-center max-w-[50rem] mx-auto">{children}</p>,
                 }}
             />
             <div className="flex items-center justify-center gap-3">
