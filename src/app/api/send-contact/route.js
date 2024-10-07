@@ -27,7 +27,7 @@ export async function POST(request) {
         },
     });
 
-    console.log("test JCH", transporter)
+    console.log("SMTP credentials", SMTP_HOST, SMTP_PORT, SMTP_EMAIL, SMTP_PASSWORD)
     try {
         const testResult = await transporter.verify();
         console.log(testResult);
