@@ -15,7 +15,7 @@ type StrengthsCarsType = {
 const Strengths = () => {
     const {data, error, isLoading} = useQuery({
         queryKey: ["home"],
-        queryFn: getHome,
+        queryFn: () => getHome(),
     });
 
     const {title, teaser, card} = data.strengths;

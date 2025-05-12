@@ -16,7 +16,7 @@ const Expertises = () => {
     const [counterStart, setCounterStart] = useState(false)
     const {data, error, isLoading} = useQuery({
         queryKey: ["about"],
-        queryFn: getAbout
+        queryFn: () => getAbout(),
     })
 
     if (isLoading) return <Loader/>;

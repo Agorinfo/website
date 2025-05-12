@@ -107,6 +107,7 @@ export type SolutionCardType = {
 
 export type ContentType = {
     teaser?: string;
+    teaserClassName?: string;
     content: BlocksContent;
     label1?: string;
     label2?: string;
@@ -127,6 +128,7 @@ export type CallToActionType = {
     text: string;
     headingClassName: string;
     buttonClassName: string;
+    noBg?: boolean;
 }
 export type CallToActionPageType = {
     title: string;

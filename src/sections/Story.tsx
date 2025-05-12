@@ -17,7 +17,7 @@ type StoryCardType = {
 const Story = () => {
     const {data, error, isLoading} = useQuery({
         queryKey: ["about"],
-        queryFn: getAbout
+        queryFn: () => getAbout()
     })
 
     const {story} = data;

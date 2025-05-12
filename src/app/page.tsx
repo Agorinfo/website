@@ -46,7 +46,7 @@ export default async function Home() {
     const queryClient = new QueryClient()
     await queryClient.prefetchQuery({
         queryKey: ["home"],
-        queryFn: getHome,
+        queryFn: () => getHome(),
     })
 
     return (

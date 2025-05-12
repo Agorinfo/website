@@ -46,15 +46,15 @@ const Services = async () => {
     const queryClient = new QueryClient()
     await queryClient.prefetchQuery({
         queryKey: ["solutions"],
-        queryFn: getSolution,
+        queryFn: () => getSolution(),
     });
     await queryClient.prefetchQuery({
         queryKey: ["home"],
-        queryFn: getHome,
+        queryFn: () => getHome(),
     });
     await queryClient.prefetchQuery({
         queryKey: ["services"],
-        queryFn: getServices,
+        queryFn: () => getServices(),
     });
 
     return (

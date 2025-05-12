@@ -9,7 +9,7 @@ import emptyImg from "@/assets/empty-img.png"
 const ReassuranceArchiveSolution = () => {
     const {data, isLoading, error} = useQuery({
         queryKey: ["global"],
-        queryFn: getGlobal
+        queryFn: () => getGlobal()
     })
     if (isLoading) return <Loader/>
 

@@ -22,15 +22,15 @@ export default async function RootLayout({
     const queryClient = new QueryClient()
     await queryClient.prefetchQuery({
         queryKey: ["global"],
-        queryFn: getGlobal,
+        queryFn: () => getGlobal(),
     })
     await queryClient.prefetchQuery({
         queryKey: ["menu"],
-        queryFn: getMenu,
+        queryFn: () => getMenu(),
     })
     await queryClient.prefetchQuery({
         queryKey: ["footer"],
-        queryFn: getFooter,
+        queryFn: () => getFooter(),
     })
     return (
         <html lang="fr" className="scroll-smooth">

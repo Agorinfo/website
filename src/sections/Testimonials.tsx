@@ -8,7 +8,7 @@ import Loader from "@/components/Loader";
 const Testimonials = () => {
     const{data, error, isLoading} = useQuery({
         queryKey: ["home"],
-        queryFn: getHome,
+        queryFn: () => getHome(),
     });
 
     if(isLoading) return  <Loader />

@@ -10,7 +10,7 @@ import Hero from "@/components/Hero";
 const HeroHome = () => {
     const{data, error, isLoading} = useQuery({
         queryKey: ["home"],
-        queryFn: getHome,
+        queryFn: () => getHome(),
     });
 
     const { images } = data.hero;

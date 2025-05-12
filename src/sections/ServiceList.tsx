@@ -27,7 +27,7 @@ type RelatedCardType = {
 const ServiceList = () => {
     const {data, error, isLoading} = useQuery({
         queryKey: ["services"],
-        queryFn: getServices
+        queryFn: () => getServices()
     })
 
     const [ref] = useKeenSlider<HTMLDivElement>({

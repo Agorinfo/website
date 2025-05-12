@@ -9,7 +9,7 @@ import curve from "@/assets/center.png"
 const HeroAbout = () => {
     const {data, error, isLoading} = useQuery({
         queryKey: ["about"],
-        queryFn: getAbout
+        queryFn: () => getAbout(),
     })
 
     if (isLoading) return <Loader/>;

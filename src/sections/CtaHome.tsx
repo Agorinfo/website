@@ -10,7 +10,7 @@ const CtaHome = () => {
     const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
     const {data, error, isLoading} = useQuery({
         queryKey: ["home"],
-        queryFn: getHome,
+        queryFn: () => getHome(),
     });
 
     const {title, text, label, url, image} = data.callToAction;

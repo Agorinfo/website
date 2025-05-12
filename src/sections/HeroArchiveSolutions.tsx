@@ -9,12 +9,12 @@ import Loader from "@/components/Loader";
 const HeroArchiveSolutions = () => {
     const {data, error, isLoading} = useQuery({
         queryKey: ["solutions"],
-        queryFn: getSolutions,
+        queryFn: () => getSolutions(),
     })
 
     const global = useQuery({
         queryKey: ["global"],
-        queryFn: getGlobal,
+        queryFn: () => getGlobal(),
     })
 
     if(isLoading || global.isLoading) return  <Loader />

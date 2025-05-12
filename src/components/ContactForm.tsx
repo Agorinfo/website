@@ -48,7 +48,7 @@ const ContactForm = () => {
 
     const {data, isLoading, error} = useQuery({
         queryKey: ["global"],
-        queryFn: getGlobal
+        queryFn: () => getGlobal()
     })
 
     const {siteName, street, adressComp, zipCode, city, tel, email} = data;

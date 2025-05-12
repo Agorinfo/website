@@ -8,7 +8,7 @@ import Loader from "@/components/Loader";
 const TeamsDescription = () => {
     const {data, error, isLoading} = useQuery({
         queryKey: ["about"],
-        queryFn: getAbout
+        queryFn: () => getAbout(),
     })
 
     if (isLoading) return <Loader/>;

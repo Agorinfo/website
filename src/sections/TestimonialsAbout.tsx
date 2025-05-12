@@ -8,7 +8,7 @@ import getAbout from "@/actions/getAbout";
 const Testimonials = () => {
     const{data, error, isLoading} = useQuery({
         queryKey: ["about"],
-        queryFn: getAbout,
+        queryFn: () => getAbout(),
     });
 
     if(isLoading) return  <Loader />

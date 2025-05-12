@@ -7,9 +7,9 @@ import clsx from "clsx";
 import emptyImg from "@/assets/empty-img.png"
 import toast from "react-hot-toast";
 
-const CallToAction = ({title, text, headingClassName, buttonClassName}: CallToActionType) => {
+const CallToAction = ({title, text, headingClassName, buttonClassName, noBg}: CallToActionType) => {
     return (
-        <section className="bg-gradient-to-b from-accent-shadow from-50% to-white to-50% py-12 full-width -mt-px">
+        <section className={`${noBg ? "" : "bg-gradient-to-b from-accent-shadow"} from-50% to-white to-50% py-12 full-width -mt-px`}>
             <div
                 className="flex flex-col lg:flex-row items-center justify-between w-full bg-grayscale-lighter p-8 rounded-lg">
                 <div className="lg:w-3/5 2xl:w-auto pb-6 lg:pb-0">

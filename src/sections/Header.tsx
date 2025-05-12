@@ -16,12 +16,12 @@ const Header = () => {
     const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
     const {data, error, isLoading} = useQuery({
         queryKey: ["menu"],
-        queryFn: getMenu
+        queryFn: () => getMenu(),
     });
 
     const global = useQuery({
         queryKey: ["global"],
-        queryFn: getGlobal
+        queryFn: () => getGlobal(),
     })
 
     const logo = global.data?.logo.data.attributes.url

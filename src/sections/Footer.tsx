@@ -14,7 +14,7 @@ const Footer = ({}) => {
     const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
     const {data, error, isLoading} = useQuery({
         queryKey: ["footer"],
-        queryFn: getFooter,
+        queryFn: () => getFooter(),
     });
 
     // const {title, text, label, url, image} = data;
