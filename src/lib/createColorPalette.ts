@@ -9,6 +9,8 @@ type ColorPalette = {
     hover: string;
     accent: string;
     muted: string;
+    shadow: string;
+    border: string;
 };
 
 function hexToHSL(hex: string): HSLColor {
@@ -53,5 +55,7 @@ export function createColorPalette(hex: string): ColorPalette {
         hover: `hsl(${h}, ${s}%, 25%)`,
         accent: `hsl(${h}, ${s}%, 80%)`,
         muted: `hsl(${h}, ${s}%, 95%)`,
+        shadow: `hsl(${h}, ${s}%, 9%)`,
+        border: `hsl(${h}, ${s}%, 30%)`,
     };
 }

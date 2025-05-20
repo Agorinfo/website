@@ -33,8 +33,8 @@ export default async function RootLayout({
         queryFn: () => getFooter(),
     })
     return (
-        <html lang="fr" className="scroll-smooth">
-        <body className={`${inter.className} overflow-x-hidden`}>
+        <html lang="fr" className="scroll-smooth overflow-x-clip">
+        <body className={`${inter.className} overflow-x-clip`}>
         <UseReactQuery>
             <HydrationBoundary state={dehydrate(queryClient)}>
                 <div id="modal-root"></div>

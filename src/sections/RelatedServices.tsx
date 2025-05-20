@@ -13,7 +13,7 @@ const RelatedServices = async ({title, solutions}: RelatedServicesType) => {
     return (
         <div className='py-12'>
             <h2 className="text-center text-h3 pb-12">{title}</h2>
-            <div className="pb-8 flex justify-center gap-8">
+            <div className="pb-8 flex justify-center flex-wrap gap-8">
                 {filteredSolutions.map((item:any) => (
                     <RelatedCard
                         key={item.id}

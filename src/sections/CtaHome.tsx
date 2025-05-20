@@ -21,7 +21,7 @@ const CtaHome = () => {
 
     return (
         <section className="py-6 sm:py-8 lg:py-12 text-white">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-5 w-full rounded-lg overflow-clip md:h-80">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 w-full rounded-lg overflow-hidden md:h-80">
                 <div className="flex flex-col items-start p-8 lg:col-span-2 bg-featured-shadow">
                     <h3 className="text-h3 font-bold pb-4">{title}</h3>
                     <p className="pb-8">{text}</p>

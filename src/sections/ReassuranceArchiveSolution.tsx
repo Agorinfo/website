@@ -9,7 +9,7 @@ import emptyImg from "@/assets/empty-img.png"
 const ReassuranceArchiveSolution = () => {
     const {data, isLoading, error} = useQuery({
         queryKey: ["global"],
-        queryFn: () => getGlobal()
+        queryFn: () => getGlobal(),
     })
     if (isLoading) return <Loader/>
 
@@ -27,6 +27,7 @@ const ReassuranceArchiveSolution = () => {
             ctaText={data.archiveSolutions.cta.text}
             ctaHeadingClassName="text-accent"
             ctaButtonClassName="btn-accent"
+            ctaButtonLabel={data.archiveServices.cta.labelButton}
         />
     );
 };

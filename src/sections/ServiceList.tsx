@@ -27,7 +27,7 @@ type RelatedCardType = {
 const ServiceList = () => {
     const {data, error, isLoading} = useQuery({
         queryKey: ["services"],
-        queryFn: () => getServices()
+        queryFn: () => getServices(),
     })
 
     const [ref] = useKeenSlider<HTMLDivElement>({
@@ -61,10 +61,10 @@ const ServiceList = () => {
             {data.map((item: RelatedCardType) => (
                 <div key={item.id} className="keen-slider__slide py-12">
                     <RelatedCard
-                        icon={item.attributes.hero.icon}
+                        icon={item.attributes.hero?.icon}
                         title={item.attributes.name}
                         text={item.attributes.shortDescription}
-                        listItems={item.attributes.heroArchive.moduleList}
+                        listItems={item.attributes.heroArchive?.moduleList}
                         label={"Voir les différentes étapes"}
                         url={`/services/${item.attributes.slug}`}
                     />

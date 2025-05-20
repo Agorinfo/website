@@ -62,9 +62,7 @@ const ModuleSystem: React.FC<ModuleSystemProps> = ({modulesData, colors}) => {
         }
     }, [activeModuleIndex, modulesData]);
 
-
     if (!hydrated) return <Loader/>;
-
     return (
         <AnimatePresence mode="wait" initial={false}>
             <div
@@ -185,42 +183,44 @@ const ModuleSystem: React.FC<ModuleSystemProps> = ({modulesData, colors}) => {
                                                     key={`content-${activeFeature.id}`}
                                                     className="p-4 rounded-lg bg-white flex-auto"
                                                 >
-                                                    {activeFeature.attributes.details.map((detail: DetailType) => (
-                                                        <div
-                                                            className="pb-2 pt-2 border-b border-grayscale-lighter first:pt-0 last:border-0"
-                                                            key={"detail-mobile" + detail.id}>
-                                                            <h3 className={clsx("text-[1rem] font-semibold", detail.detail && "pb-2")}>{detail.title}</h3>
-                                                            {detail && detail.detail &&
-                                                                <BlocksRenderer
-                                                                    content={detail.detail}
-                                                                    blocks={{
-                                                                        paragraph: ({children}) =>
-                                                                            <p
-                                                                                style={{
-                                                                                    borderLeft: `1px solid ${colors.accent}`,
-                                                                                }}
-                                                                                className="text-[1rem] text-grayscale-darkest pl-4 whitespace-pre-line"
-                                                                            >
-                                                                                {children}
-                                                                            </p>,
-                                                                        list: ({children}) =>
-                                                                            <ul
-                                                                                style={{
-                                                                                    borderLeft: `1px solid ${colors.accent}`,
-                                                                                }}
-                                                                                className="list-disc list-inside py-4 pl-4 text-grayscale-darker whitespace-pre-line "
-                                                                            >
-                                                                                {children}
-                                                                            </ul>,
-                                                                        "list-item": ({children}) =>
-                                                                            <li>
-                                                                                {children}
-                                                                            </li>,
-                                                                    }}
-                                                                />
-                                                            }
-                                                        </div>
-                                                    ))}
+                                                    {activeFeature.attributes.details.map((detail: DetailType) => {
+                                                        return (
+                                                            <div
+                                                                className="pb-2 pt-2 border-b border-grayscale-lighter first:pt-0 last:border-0"
+                                                                key={"detail-mobile" + detail.id}>
+                                                                <h3 className={clsx("text-[1rem] font-semibold", detail.detail && "pb-2")}>{detail.title}</h3>
+                                                                {detail && detail.detail &&
+                                                                    <BlocksRenderer
+                                                                        content={typeof detail.detail === "string" ? JSON.parse(detail.detail) : detail.detail}
+                                                                        blocks={{
+                                                                            paragraph: ({children}) =>
+                                                                                <p
+                                                                                    style={{
+                                                                                        borderLeft: `1px solid ${colors.accent}`,
+                                                                                    }}
+                                                                                    className="text-[1rem] text-grayscale-darkest pl-4 whitespace-pre-line"
+                                                                                >
+                                                                                    {children}
+                                                                                </p>,
+                                                                            list: ({children}) =>
+                                                                                <ul
+                                                                                    style={{
+                                                                                        borderLeft: `1px solid ${colors.accent}`,
+                                                                                    }}
+                                                                                    className="list-disc list-inside py-4 pl-4 text-grayscale-darker whitespace-pre-line "
+                                                                                >
+                                                                                    {children}
+                                                                                </ul>,
+                                                                            "list-item": ({children}) =>
+                                                                                <li>
+                                                                                    {children}
+                                                                                </li>,
+                                                                        }}
+                                                                    />
+                                                                }
+                                                            </div>
+                                                        )
+                                                    })}
                                                 </motion.div>
                                             </TabPanel>
                                         )}
@@ -278,7 +278,7 @@ const ModuleSystem: React.FC<ModuleSystemProps> = ({modulesData, colors}) => {
                                         <h3 className={clsx("text-[1rem] font-semibold", detail.detail && "pb-2")}>{detail.title}</h3>
                                         {detail && detail.detail &&
                                             <BlocksRenderer
-                                                content={detail.detail}
+                                                content={typeof detail.detail === "string" ? JSON.parse(detail.detail) : detail.detail}
                                                 blocks={{
                                                     paragraph: ({children}) =>
                                                         <p

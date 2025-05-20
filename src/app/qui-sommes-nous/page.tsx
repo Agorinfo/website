@@ -10,7 +10,6 @@ import Strengths from "@/sections/Strengths";
 import getHome from "@/actions/getHome";
 import type {Metadata} from "next";
 import getGlobal from "@/actions/getGlobal";
-import RichText from "@/components/RichText";
 import TeamsDescription from "@/sections/TeamsDescription";
 
 export const generateMetadata = async (): Promise<Metadata> => {

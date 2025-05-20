@@ -1,33 +1,21 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {NavItemsType} from "@/utils/types";
-import Button, {ModalButton} from "@/components/Button";
+import {ModalButton} from "@/components/Button";
 import Icon from "@/components/icons/Icon";
 import NavCard from "@/components/NavCard";
 import Link from "next/link";
-import emptyImg from "@/assets/empty-img.png"
+import emptyImg from "@/assets/empty-img.png";
 import clsx from "clsx";
 import ContactForm from "@/components/ContactForm";
+import useLockScroll from "@/utils/useLockScroll";
 
 const Nav = ({navItems, isOpen, setIsOpen}: NavItemsType) => {
     const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
     const [openSubNav, setOpenSubNav] = useState<number | undefined>();
     const navRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const body = document.body;
-        const scroll = () => {
-            body.classList.remove("overflow-hidden");
-        }
-        const noScroll = () => {
-            body.classList.add("overflow-hidden");
-        }
+    useLockScroll(isOpen);
 
-        if (isOpen) {
-            noScroll();
-        } else {
-            scroll();
-        }
-    }, [isOpen]);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -66,30 +54,34 @@ const Nav = ({navItems, isOpen, setIsOpen}: NavItemsType) => {
                             {item.subNavItems.length > 0 ?
                                 <>
                                     <button
-                                        onClick={() => setOpenSubNav(openSubNav === index ? undefined : index )}
-                                        className=" hidden lg:inline-flex items-center gap-1 pb-6 lg:pb-0 font-bold hover:text-accent transition-color duration-300 ease-linear">{item.label}
-                                        <Icon name={"down"}/>
+                                        onClick={() => setOpenSubNav(openSubNav === index ? undefined : index)}
+                                        className="hidden lg:inline-flex w-full items-center gap-1 pb-6 lg:pb-0 font-bold hover:text-accent transition-color duration-300 ease-linear">{item.label}
+                                        <Icon className="flex-auto justify-self-start" name={"down"}/>
                                     </button>
-                                    <div className="flex items-center gap-1 lg:hidden pb-6">
+                                    {item.url && item.label && <div className="flex items-center gap-1 lg:hidden pb-6">
                                         <Link onClick={() => setIsOpen(false)}
                                               href={item.url}
                                               className={clsx("font-bold hover:text-accent transition-color duration-300 ease-linear", isOpen && "text-accent")}>{item.label}
                                         </Link>
-                                        <Icon size={32} name={"down"}/>
-                                    </div>
+                                        <button className="grow" onClick={() => setOpenSubNav(openSubNav === index ? undefined : index)}>
+                                            <Icon size={32} name={"down"} />
+                                        </button>
+
+                                    </div>}
                                 </>
                                 :
+                                item.url && item.label &&
                                 <Link onClick={() => {
                                     setIsOpen(false);
                                     setOpenSubNav(undefined);
                                 }}
-                                      className="font-bold hover:text-accent transition-color duration-300 ease-linear"
+                                      className="font-bold hover:text-accent transition-color duration-300 ease-linear pb-6 lg:pb-0 inline-block w-full"
                                       href={item.url}>{item.label}
                                 </Link>
                             }
                             {item.subNavItems.length > 0 &&
                                 <div
-                                    className={clsx("w-full max-w-screen-xl overflow-clip transition-all duration-700 ease-[cubic-bezier(0.68,-0.55,0,2.61)] lg:absolute lg:z-50 lg:left-0 lg:bg-featured-shine lg:border lg:border-greyscale-lighter lg:shadow-subNav lg:rounded-lg lg:px-[8.333vw]",
+                                    className={clsx("w-full max-w-screen-xl overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.68,-0.55,0,2.61)] lg:absolute lg:z-50 lg:left-0 lg:bg-featured-shine lg:border lg:border-greyscale-lighter lg:shadow-subNav lg:rounded-lg lg:px-[7.333vw]",
                                         openSubNav === index ? "max-h-[2000px] lg:visible opacity-100 lg:top-[110%]" : "lg:invisible opacity-0 max-h-0 lg:top-[90%]"
                                     )}>
                                     <div
@@ -107,21 +99,23 @@ const Nav = ({navItems, isOpen, setIsOpen}: NavItemsType) => {
                                                 />
                                             ))}
                                         </div>
-                                        <div className="bg-white rounded-lg overflow-clip flex flex-col">
+                                        <div className="bg-white rounded-lg overflow-hidden flex flex-col">
                                             <img className="hidden flex-auto object-cover lg:block"
                                                  src={item.image.data ? backUrl + item.image.data.attributes.url : emptyImg.src}
                                                  alt={item.image.data ? item.image.data.attributes.alternativeText : ""}/>
-                                            <div className="pb-6 lg:p-3 text-center">
-                                                <Link
-                                                    onClick={() => {
-                                                        setIsOpen(false);
-                                                        setOpenSubNav(undefined);
-                                                    }}
-                                                    className="btn btn-gray w-full lg:w-auto lg:btn-small lg:btn-small-minor"
-                                                    href={item.url}>
-                                                    {item.labelButton}
-                                                </Link>
-                                            </div>
+                                            {item.url && item.labelButton &&
+                                                <div className="pb-6 lg:p-3 text-center">
+                                                    <Link
+                                                        onClick={() => {
+                                                            setIsOpen(false);
+                                                            setOpenSubNav(undefined);
+                                                        }}
+                                                        className="btn btn-gray w-full lg:w-auto lg:btn-small lg:btn-small-minor"
+                                                        href={item?.url}>
+                                                        {item?.labelButton}
+                                                    </Link>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                 </div>

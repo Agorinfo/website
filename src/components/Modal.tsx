@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import {X} from "@phosphor-icons/react";
 import {AnimatePresence, motion} from "framer-motion";
 import useModalStore from "@/store/ModalStore";
+import useLockScroll from "@/utils/useLockScroll";
 
 type ModalType = {
     isOpen: boolean
@@ -47,17 +48,8 @@ const Modal = () => {
         setHydrated(true);
     }, []);
 
-    useEffect(() => {
-        const body = document.body;
-        const noScroll = () => body.classList.add('overflow-hidden');
-        const scroll = () => body.classList.remove('overflow-hidden');
+    useLockScroll(isOpen);
 
-        if (isOpen) {
-            noScroll();
-        }
-
-        return () => scroll();
-    }, [isOpen]);
 
     const modalContent = (
         <AnimatePresence mode="wait" onExitComplete={closeModal} initial={false}>

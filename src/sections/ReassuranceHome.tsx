@@ -1,14 +1,8 @@
 "use client"
 import React from 'react';
-import Button from "@/components/Button";
-import {ReassuranceType} from "@/utils/types";
-import {SliderLandscape} from "@/components/Slider";
-import CallToAction from "@/components/CallToAction";
 import {useQuery} from "@tanstack/react-query";
 import getHome from "@/actions/getHome";
 import Loader from "@/components/Loader";
-import {BlocksRenderer} from "@strapi/blocks-react-renderer";
-import Content from "@/components/Content";
 import getGlobal from "@/actions/getGlobal";
 import Reassurance from "@/components/Reassurance";
 import emptyImg from "@/assets/empty-img.png"
@@ -38,6 +32,7 @@ const ReassuranceHome = () => {
             url={url}
             ctaTitle={callToAction.title}
             ctaText={callToAction.text}
+            ctaButtonLabel={callToAction.labelButton}
             ctaHeadingClassName="text-accent"
             ctaButtonClassName="btn-accent"
         />

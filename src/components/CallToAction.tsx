@@ -9,14 +9,15 @@ import toast from "react-hot-toast";
 
 const CallToAction = ({title, text, headingClassName, buttonClassName, noBg}: CallToActionType) => {
     return (
-        <section className={`${noBg ? "" : "bg-gradient-to-b from-accent-shadow"} from-50% to-white to-50% py-12 full-width -mt-px`}>
+        <section
+            className={`${noBg ? "" : "bg-gradient-to-b from-accent-shadow"} from-50% to-white to-50% py-12 full-width -mt-px`}>
             <div
-                className="flex flex-col lg:flex-row items-center justify-between w-full bg-grayscale-lighter p-8 rounded-lg">
-                <div className="lg:w-3/5 2xl:w-auto pb-6 lg:pb-0">
+                className="flex flex-col lg:flex-row items-center justify-between w-full bg-grayscale-lighter p-8 rounded-lg gap-8">
+                <div className="flex-[3] pb-6 lg:pb-0">
                     <h3 className={"text-h3 font-bold pb-2 " + headingClassName}>{title}</h3>
                     <p className="paragraph">{text}</p>
                 </div>
-                <ModalButton label="Être recontacté par un conseiller" className={"btn " + buttonClassName}>
+                <ModalButton label="Être recontacté par un conseiller" className={"flex-1 btn " + buttonClassName}>
                     <ContactForm/>
                 </ModalButton>
             </div>
@@ -102,7 +103,8 @@ interface CallToActionImageType {
         }
     };
     position?: "image à gauche" | "image à droite";
-    color: "bleu" | "gris";
+    color: "bleu" | "gris" | "bleu clair";
+    background?: boolean;
 }
 
 export const CallToActionImage = ({
@@ -113,18 +115,25 @@ export const CallToActionImage = ({
                                       image,
                                       position = 'image à gauche',
                                       color,
-                                      document
+                                      document,
+                                      background
                                   }: CallToActionImageType) => {
     const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
 
     return (
-        <section className={clsx(`py-6 sm:py-8 lg:py-12`, color === "bleu" && "text-white")}>
+        <section className={clsx(`py-6 sm:py-8 lg:py-12 full-width`,
+            color === "bleu" && "text-white",
+            color === "bleu clair" && "text-white",
+            background && "bg-gradient-to-b from-40% from-accent-shine to-40% to-white",
+        )}
+        >
             <div
                 className={clsx("grid sm:grid-cols-2 lg:grid-cols-5 w-full rounded-lg overflow-clip md:h-80", color === "gris" && "border border-grayscale-medium")}>
                 <div className={clsx("flex flex-col items-start p-8",
                     position === 'image à droite' && "lg:col-span-2",
                     position === 'image à gauche' && "order-1 lg:col-span-3",
                     color === "bleu" && "bg-featured-shadow",
+                    color === "bleu clair" && "bg-featured",
                     color === "gris" && "bg-grayscale-lightest"
                 )}
                 >
@@ -158,8 +167,8 @@ export const CallToActionImage = ({
                 >
                     <img
                         className="h-full w-full object-cover object-center"
-                        src={image.data ? backUrl + image.data.attributes.url : emptyImg.src}
-                        alt={image.data ? image.data.attributes.alternativeText : ""}
+                        src={image && image.data ? backUrl + image.data.attributes.url : emptyImg.src}
+                        alt={image && image.data ? image.data.attributes.alternativeText : ""}
                     />
                 </div>
             </div>
@@ -173,7 +182,7 @@ export const CallToActionPage = ({title, text, headingClassName, buttonClassName
         backgroundColor: hover ? colors?.hover : colors?.base,
     };
     return (
-        <section className=" relative full-width -mt-[72px] md:-mt-[88px] lg:-mt-[120px] py-6 md:py-8 lg:py-12">
+        <section className=" relative full-width md:-mt-[88px] lg:-mt-[120px] py-6 md:py-8 lg:py-12">
             <div
                 className="flex flex-col lg:flex-row items-center justify-between w-full bg-grayscale-lighter p-8 rounded-lg">
                 <div className="lg:w-3/5 2xl:w-auto">

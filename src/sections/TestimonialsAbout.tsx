@@ -6,19 +6,24 @@ import Loader from "@/components/Loader";
 import getAbout from "@/actions/getAbout";
 
 const Testimonials = () => {
-    const{data, error, isLoading} = useQuery({
+    const {data, error, isLoading} = useQuery({
         queryKey: ["about"],
         queryFn: () => getAbout(),
     });
 
-    if(isLoading) return  <Loader />
+    if (isLoading) return <Loader/>
 
-    if(error) return <p>{error.message}</p>
+    if (error) return <p>{error.message}</p>
 
     return (
-        <section>
-           <TestimonialSlide testimonials={data.testimonials}/>
-        </section>
+        <>
+            {data.testimonials.length ?
+                <section>
+                    <TestimonialSlide testimonials={data.testimonials}/>
+                </section>
+                : null
+            }
+        </>
     );
 };
 

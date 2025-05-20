@@ -53,7 +53,7 @@ export type IconCardType = {
 export type CardListType = {
     tag?: string;
     label: string;
-    color: "bleu" | "bleu foncé" | "violet"
+    color: "bleu" | "bleu foncé" | "vert"
 }
 
 export type TestimonialType = {
@@ -107,7 +107,6 @@ export type SolutionCardType = {
 
 export type ContentType = {
     teaser?: string;
-    teaserClassName?: string;
     content: BlocksContent;
     label1?: string;
     label2?: string;
@@ -126,6 +125,7 @@ export type ContentType = {
 export type CallToActionType = {
     title: string;
     text: string;
+    buttonLabel: string;
     headingClassName: string;
     buttonClassName: string;
     noBg?: boolean;
@@ -193,12 +193,45 @@ export type ReassuranceType = {
                     {
                         url: string;
                         alternativeText: string;
-                        formats: { small: { url: string; }; };
+                        formats: {
+                            small: {
+                                url: string;
+                            }
+                        }
                     };
             }[];
     };
     ctaTitle: string;
     ctaText: string;
+    ctaButtonLabel: string;
+    ctaHeadingClassName: string;
+    ctaButtonClassName: string;
+}
+
+export type SectionFaqType = {
+    icon: string;
+    alt: string;
+    text: string;
+    label: string;
+    url: string;
+    images: {
+        data:
+            {
+                attributes:
+                    {
+                        url: string;
+                        alternativeText: string;
+                        formats: {
+                            small: {
+                                url: string;
+                            }
+                        }
+                    };
+            }[];
+    };
+    ctaTitle: string;
+    ctaText: string;
+    ctaButtonLabel: string;
     ctaHeadingClassName: string;
     ctaButtonClassName: string;
 }
@@ -231,7 +264,11 @@ export type HeroPageType = {
                     {
                         url: string;
                         alternativeText: string;
-                        formats: { small: { url: string; }; };
+                        formats: {
+                            small: {
+                                url: string;
+                            }
+                        }
                     };
             }[];
     };
@@ -292,7 +329,6 @@ export type HeroArchiveType = {
                             attributes: {
                                 url: string;
                                 alternativeText: string;
-                                formats: { small: { url: string; }; };
                             }
                         }
                     }
@@ -302,7 +338,6 @@ export type HeroArchiveType = {
                         attributes: {
                             url: string;
                             alternativeText: string;
-                            formats: { small: { url: string; }; };
                         }
                     }
                 }
