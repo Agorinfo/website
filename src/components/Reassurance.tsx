@@ -11,7 +11,7 @@ const Reassurance = ({icon, alt, text, label, url, images, ctaTitle, ctaText, ct
         <>
             <section className="relative pt-28 mt-24 bg-accent-shadow full-width text-white">
                 <span className="absolute left-0 -top-10 md:-top-20 size-20 md:size-40 rounded-full inline-flex items-center justify-center bg-featured-shine shadow-thumb">
-                    <img src={icon ? backUrl + icon : emptyImg.src} alt={alt}/>
+                    <img className="w-full h-full" src={icon ? backUrl + icon : emptyImg.src} alt={alt ? alt : "Agorinfo"}/>
                 </span>
                 <div className="">
                     <div className="grid lg:grid-cols-8 items-center gap-[3.283vw] xl:gap-[2.2vw]">
