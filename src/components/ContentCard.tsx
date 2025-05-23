@@ -1,7 +1,13 @@
 import React from 'react';
-import {BlocksRenderer} from "@strapi/blocks-react-renderer";
+import {BlocksContent, BlocksRenderer} from "@strapi/blocks-react-renderer";
 
-const ContentCard = ({title, text}) => {
+type ContentCardType = {
+    title: string;
+    text: BlocksContent;
+    headingClassName?: string;
+};
+
+const ContentCard = ({title, text, headingClassName}: ContentCardType) => {
     return (
         <div className="py-8 px-10 rounded-2xl">
             <h3 className={"text-h5 font-bold pb-4 text-center"}>{title}</h3>
