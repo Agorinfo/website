@@ -6,9 +6,10 @@ type ExpertiseType = {
     icon: string;
     title: string;
     text: BlocksContent;
+    headingClassName?: string;
 }
 
-const Expertise = ({index, icon, title, text}: ExpertiseType) => {
+const Expertise = ({index, icon, title, text, headingClassName}: ExpertiseType) => {
     const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
     const even = index % 2 === 0;
     return (
