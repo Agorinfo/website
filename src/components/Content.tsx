@@ -4,12 +4,12 @@ import Button, {ModalButton} from "@/components/Button";
 import {ContentType} from "@/utils/types";
 import ContactForm from "@/components/ContactForm";
 
-const Content = ({teaser, content, label1, label2, url1, url2, headingClassName, headingStyle, btn1ClassName, btn1Style, onMouseEnter, onMouseLeave}: ContentType) => {
+const Content = ({teaser, content, label1, label2, url1, url2, headingClassName, headingStyle, btn1ClassName, btn1Style, onMouseEnter, onMouseLeave, teaserClassName}: ContentType) => {
 
     return (
         <div
             className="flex flex-col justify-center lg:py-12 lg:text-left xl:py-0">
-            <p className={`mb-4 font-semibold md:mb-6 md:text-lg xl:text-xl "text-accent"`}>{teaser}</p>
+            <p className={`mb-4 font-semibold md:mb-6 md:text-lg xl:text-xl ${teaserClassName ? teaserClassName : "text-accent"}`}>{teaser}</p>
             <BlocksRenderer
                 content={content}
                 blocks={{

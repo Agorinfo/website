@@ -120,6 +120,7 @@ export type ContentType = {
     btn1Style?: React.CSSProperties;
     onMouseEnter?: React.MouseEventHandler;
     onMouseLeave?: React.MouseEventHandler;
+    teaserClassName?: string;
 }
 
 export type CallToActionType = {
