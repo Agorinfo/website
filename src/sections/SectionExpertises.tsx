@@ -7,6 +7,26 @@ import Expertise from "@/components/Expertise";
 import ContentCard from "@/components/ContentCard";
 import CallToAction from "@/components/CallToAction";
 import {ArrowLeft} from "@phosphor-icons/react";
+import {BlocksContent} from "@strapi/blocks-react-renderer";
+
+type ExpertiseType = {
+    id: number;
+    title: string;
+    text: string;
+    icon: {
+        data: {
+            attributes: {
+                url: string;
+            }
+        }
+    };
+};
+
+type CardType = {
+    id: number;
+    title: string;
+    text: BlocksContent;
+};
 
 const SectionExpertises = () => {
     const {data: expertises, error, isLoading} = useQuery({
@@ -20,9 +40,10 @@ const SectionExpertises = () => {
 
     return (
         <>
-            <button className='text-featured my-12' onClick={() => window.history.back()}><ArrowLeft size={24}/></button>
+            <button className='text-featured my-12' onClick={() => window.history.back()}><ArrowLeft size={24}/>
+            </button>
             <div className="flex flex-col gap-20">
-                {expertises.expertises.map((expertise, index: number) => (
+                {expertises.expertises.map((expertise: ExpertiseType, index: number) => (
                     <div key={expertise.id}>
                         <Expertise
                             index={index}
@@ -37,7 +58,7 @@ const SectionExpertises = () => {
             </div>
             <div
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 [&>*:nth-child(1)]:bg-accent-shine [&>*:nth-child(2)]:bg-accent-muted [&>*:nth-child(3)]:bg-accent [&>*:nth-child(3n)]:text-white">
-                {expertises.card.map((card) => (
+                {expertises.card.map((card: CardType) => (
                     <ContentCard
                         key={card.id}
                         title={card.title}
@@ -50,9 +71,11 @@ const SectionExpertises = () => {
                 text={expertises.cta.text}
                 headingClassName='text-accent'
                 buttonClassName='btn-accent'
+                buttonLabel="En savoir plus"
                 noBg
             />
-            <button className='text-featured my-12' onClick={() => window.history.back()}><ArrowLeft size={24}/></button>
+            <button className='text-featured my-12' onClick={() => window.history.back()}><ArrowLeft size={24}/>
+            </button>
         </>
     );
 };

@@ -4,7 +4,6 @@ import getExpertise from "@/actions/getExpertise";
 import HeroExpertises from "@/sections/HeroExpertises";
 import SectionExpertises from "@/sections/SectionExpertises";
 import type {Metadata} from "next";
-import getAbout from "@/actions/getAbout";
 import getGlobal from "@/actions/getGlobal";
 
 export const generateMetadata = async (): Promise<Metadata> => {
