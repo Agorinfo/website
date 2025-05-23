@@ -53,7 +53,7 @@ export type IconCardType = {
 export type CardListType = {
     tag?: string;
     label: string;
-    color: "bleu" | "bleu foncé" | "vert"
+    color: "bleu" | "bleu foncé" | "violet"
 }
 
 export type TestimonialType = {

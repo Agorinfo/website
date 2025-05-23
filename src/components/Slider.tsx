@@ -91,7 +91,7 @@ export default function Slider({images, logo, layout = "square"}: Props) {
                         />
                     </div>
                 )}
-                <AnimatePresence mode="wait">
+                <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                         className="relative z-10 bg-white w-full h-full p-3 rounded-xl"
                         initial={{opacity: 0.3}}

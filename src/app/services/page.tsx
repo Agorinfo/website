@@ -18,7 +18,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     return {
         metadataBase: new URL(metas.canonicalUrl),
-        title: metas.meta_title || "Agorinfo, éditeur de solution logicielles métier",
+        title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
         description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
         openGraph: {
             title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",

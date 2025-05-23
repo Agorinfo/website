@@ -27,7 +27,7 @@ const TestimonialCard = ({
               />
             </div>
             <div className="flex items-center justify-center gap-3 pt-6">
-                <img className="rounded-full size-14 object-cover" src={avatar ? avatar : emptyImg.src } alt={avatarAlt ? avatarAlt : ""}/>
+                <img className="rounded-full size-14 object-contain" src={avatar ? avatar : emptyImg.src } alt={avatarAlt ? avatarAlt : ""}/>
                 <div className="flex flex-col">
                     <span className="text-accent text-base font-bold capitalize">{firstname} {name}</span>
                     <span className="text-sm text-grayscale-darker capitalize">{job} / {company}</span>

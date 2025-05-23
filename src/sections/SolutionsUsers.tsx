@@ -9,7 +9,7 @@ import {BlocksRenderer} from "@strapi/blocks-react-renderer";
 type ListCardType = {
     id: number,
     tag:string,
-    color: "bleu" | "bleu foncé" | "vert",
+    color: "bleu" | "bleu foncé" | "violet",
     item: {
         id: number,
         label:string
@@ -63,7 +63,7 @@ const SolutionsUsers = () => {
                             tagBgColor = "bg-featured-shine";
                             tagTextColor = "text-featured-shadow";
                             break
-                        case "vert":
+                        case "violet":
                             tagBgColor = "bg-accent-muted";
                             tagTextColor = "text-accent";
                             break
