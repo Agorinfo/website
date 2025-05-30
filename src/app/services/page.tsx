@@ -12,12 +12,12 @@ import type {Metadata} from "next";
 import getGlobal from "@/actions/getGlobal";
 
 export const generateMetadata = async (): Promise<Metadata> => {
-    const {BACK_URL} = process.env;
+    const {BACK_URL,FRONT_URL} = process.env;
     const global = await getGlobal();
     const metas = global.archiveServices.metas
 
     return {
-        metadataBase: new URL(metas.canonicalUrl),
+        metadataBase: new URL(FRONT_URL + "/services"),
         title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
         description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
         openGraph: {
