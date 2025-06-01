@@ -100,14 +100,15 @@ const RessourceContent = () => {
                     </div>
                 </div>
             </div>
-            <CallToAction
-                title={global.data.archiveRessources.cta.title}
-                text={global.data.archiveRessources.cta.text}
+            { global.data.archiveRessources && global.data.archiveRessources?.cta.title && global.data.archiveRessources?.cta.text && 
+                <CallToAction
+                title={global.data.archiveRessources?.cta.title}
+                text={global.data.archiveRessources?.cta.text}
                 headingClassName="text-accent"
                 buttonClassName="btn-accent"
                 buttonLabel="Voir le témoignage"
                 noBg
-            />
+            />}
             <div>
                 <button
                     className="text-featured"
