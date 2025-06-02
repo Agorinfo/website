@@ -55,7 +55,7 @@ const RessourceCard = ({id, src, alt, url, category, title, shortDescription, co
                     className={clsx("btn w-full border")}
                     style={{borderColor: hover ? colors.base : "#E7E7E7", color: hover ? colors.hover : colors.border}}
                 >
-                    {category === "article" ? "Lire l'article" : "Lire le témoignage"}
+                    {category.toLowerCase() === "article" ? "Lire l'article" : "Lire le témoignage"}
                 </Link>
             </div>
         </motion.div>

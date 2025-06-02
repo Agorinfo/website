@@ -105,7 +105,7 @@ const ImageWithDecoration = ({
                 >
                     <div className="relative w-full h-full">
                         <img
-                            className="relative w-full h-full object-cover object-center rounded-xl bg-white border border-grayscale-lighter"
+                            className={`relative max-w-[36rem] w-full ${layout === "landscape" ? "aspect-[4/3] md:aspect-[3/2]" : "aspect-square"} object-cover object-center rounded-xl bg-white border border-grayscale-lighter`}
                             src={src ? src : emptyImg.src} alt={alt ? alt : ""}/>
                         {legend &&
                             <>

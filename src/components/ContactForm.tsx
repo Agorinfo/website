@@ -5,8 +5,6 @@ import getGlobal from "@/actions/getGlobal";
 import Loader, {LoaderButton} from "@/components/Loader";
 import Button from "@/components/Button";
 import toast from "react-hot-toast";
-import {sendMail} from "@/utils/sendEmail";
-import send from "@/actions/SendEmail";
 import useModalStore from "@/store/ModalStore";
 
 const ContactForm = () => {

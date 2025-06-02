@@ -20,8 +20,6 @@ const RessourceGridItems = () => {
     const searchParams = useSearchParams();
 
     const dataCat = searchParams.get("cat");
-    console.log(dataCat);
-    console.log(activeCategory);
     useEffect(() => {
         if (dataCat) {
             setActiveCategory(Number(dataCat));

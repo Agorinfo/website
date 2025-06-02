@@ -16,20 +16,20 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     return {
         metadataBase: new URL(FRONT_URL + "/services"),
-        title: metas?.meta_title || "Wenegoce, éditeur de solution logicielles métier",
-        description: metas?.meta_description || "Solutions logicielles de gestion : Wenegoce",
+        title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
+        description: metas?.meta_description || "Solutions logicielles de gestion : Agorinfo",
         openGraph: {
-            title: metas?.meta_title || "Wenegoce, éditeur de solution logicielles métier",
-            siteName: metas?.meta_title || "Wenegoce, éditeur de solution logicielles métier",
-            description: metas?.meta_description || "Solutions logicielles de gestion : Wenegoce",
+            title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
+            siteName: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
+            description: metas?.meta_description || "Solutions logicielles de gestion : Agorinfo",
             url: FRONT_URL + "/services",
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
         },
         twitter: {
             card: 'summary_large_image',
             site: FRONT_URL + "/services",
-            title: metas?.meta_title || "Wenegoce, éditeur de solution logicielles métier",
-            description: metas?.meta_description || "Solutions logicielles de gestion : Wenegoce",
+            title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
+            description: metas?.meta_description || "Solutions logicielles de gestion : Agorinfo",
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
         },
         icons: {
