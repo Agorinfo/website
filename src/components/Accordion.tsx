@@ -25,13 +25,31 @@ const Accordion = ({index, expanded, setExpanded, title, text}: AccordionType) =
                     aria-controls={panelId}
                     onClick={() => setExpanded(isOpen ? false : index)}
                     className={clsx(
-                        "text-left w-full font-medium focus:outline-none focus-visible:ring-2 ring-accent rounded",
+                        "text-left w-full font-medium focus:outline-none focus-visible:ring-2 ring-accent rounded flex justify-between",
                         isOpen && "text-accent-muted"
                     )}
                     initial={false}
                     animate={isOpen ? "open" : "closed"}
                 >
                     {title}
+                    <span
+                        aria-hidden="true"
+                        className={clsx(
+                            "transition-transform duration-300 ease-linear self-start mt-2",
+                            isOpen && "rotate-180",
+                            isOpen ? "#EBF7DE" : "#B2DFFF"
+                        )}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+                          <path
+                              d="M1 1.5L5 5.5L9 1.5"
+                              stroke="currentColor"
+                              strokeWidth=""
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                          />
+                        </svg>
+                    </span>
                 </motion.button>
 
                 <AnimatePresence>
@@ -55,25 +73,6 @@ const Accordion = ({index, expanded, setExpanded, title, text}: AccordionType) =
                     )}
                 </AnimatePresence>
             </div>
-
-            <span
-                aria-hidden="true"
-                className={clsx(
-                    "transition-transform duration-300 ease-linear self-start mt-1",
-                    isOpen && "rotate-180",
-                    isOpen ? "#EBF7DE" : "#B2DFFF"
-                )}
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
-                  <path
-                      d="M1 1.5L5 5.5L9 1.5"
-                      stroke="currentColor"
-                      strokeWidth=""
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                  />
-                </svg>
-            </span>
         </div>
     );
 };
