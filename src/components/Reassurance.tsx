@@ -21,7 +21,7 @@ const Reassurance = ({icon, alt, text, label, url, images, ctaTitle, ctaText, ct
                                 label1={label}
                                 url1={url}
                                 headingClassName="[&>em]:text-featured-muted [&>em]:not-italic"
-                                btn1ClassName='btn-accent'
+                                btn1ClassName='btn-featured'
                             />
                         </div>
                         <div className="lg:col-span-5">
