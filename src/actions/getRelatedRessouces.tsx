@@ -1,10 +1,10 @@
 "use server";
 
-export default async function getRelatedRessources(categoryId: number, ressourceId: number) {
+export default async function getRelatedRessources(ressourceId: number) {
     const { API_URL, API_KEY } = process.env;
 
     const res = await fetch(
-        `${API_URL}/ressources?populate=*&filters[category][id][$eq]=${categoryId}&filters[id][$ne]=${ressourceId}&pagination[pageSize]=3`,
+        `${API_URL}/ressources?populate=*&filters[id][$ne]=${ressourceId}&pagination[pageSize]=3`,
         {
             cache: "no-store",
             headers: {

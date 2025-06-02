@@ -28,7 +28,7 @@ const HeroRessource = () => {
             className="full-width text-white"
             style={{backgroundColor: colors.shadow}}
         >
-            <div className="grid md:grid-cols-2 gap-[5.729vw] xl:gap-[3.5vw] py-32">
+            <div className="grid md:grid-cols-2 gap-[5.729vw] xl:gap-[3.5vw] py-8 md:py-16 lg:py-32">
                 <div>
                     <span className={"font-bold inline-block pb-6"}>{ressource?.category?.data.attributes.name}</span>
                     <h1 className={"text-h1 font-bold pb-12"}>{ressource?.title}</h1>

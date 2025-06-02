@@ -26,8 +26,8 @@ const ImageWithDecoration = ({
     const polygon =
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="245"
-            height="214"
+            width="100%"
+            height="100%"
             viewBox="0 0 245 214"
             fill="none"
         >
@@ -38,8 +38,8 @@ const ImageWithDecoration = ({
             />
         </svg>;
 
-    const landscapePlygon =
-        <svg xmlns="http://www.w3.org/2000/svg" width="339" height="297" viewBox="0 0 339 297" fill="none">
+    const landscapePolygon =
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 339 297" fill="none">
             <path
                 d="M253.55 296.13H84.5475L0.0463867 148.315L84.5475 0.499039L253.55 0.499023L338.051 148.315L253.55 296.13Z"
                 fill="#3A581C"/>
@@ -48,8 +48,8 @@ const ImageWithDecoration = ({
     const triangle =
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="110"
-            height="96"
+            width="100%"
+            height="100%"
             viewBox="0 0 110 96"
             fill="none"
         >
@@ -64,20 +64,20 @@ const ImageWithDecoration = ({
 
     switch (decorationPosition) {
         case "squareOne":
-            polygonPosition = "-top-12 -left-10";
-            trianglePosition = "-bottom-[85%] -right-[75%]";
+            polygonPosition = "-top-12 -left-4 md:-left-10";
+            trianglePosition = "-bottom-[85%] -right-[5%]";
             break;
         case "squareTwo":
-            polygonPosition = "-top-8 left-[35%]";
-            trianglePosition = "-bottom-[60%] -right-[80%]";
+            polygonPosition = "-top-5 md:-top-8 left-24 md:left-[24%]";
+            trianglePosition = "bottom-[20%] -right-[5%]";
             break;
         case "landscapeOne":
-            polygonPosition = "-top-14 -left-6";
-            trianglePosition = "-bottom-[55%] -right-[92%]";
+            polygonPosition = "-top-[12%] -left-2";
+            trianglePosition = "bottom-[20%] -right-[10%]";
             break;
         case "landscapeTwo":
-            polygonPosition = "-bottom-[40%] -left-[20%]";
-            trianglePosition = "top-[15%] -right-[84%]";
+            polygonPosition = "-bottom-[12%] -left-[20%]";
+            trianglePosition = "top-[15%] -right-[8%]";
             break;
         default:
             polygonPosition = "-top-12 -left-10";
@@ -86,13 +86,13 @@ const ImageWithDecoration = ({
     }
 
     return (
-        <div className={clsx("flex items-center justify-center",
+        <div className={clsx("flex items-center justify-center p-10",
             isLandscape && "py-12"
         )}
         >
             <div className="relative">
                 <span
-                    className={`absolute ${polygonPosition} w-full h-full`}>{isLandscape ? landscapePlygon : polygon}</span>
+                    className={`absolute ${polygonPosition} w-[10rem] lg:w-[21rem]`}>{isLandscape ? landscapePolygon : polygon}</span>
                 <div className={clsx("relative w-full bg-white shadow-slide rounded-2xl p-3 z-10",
                     rotation === 1 && "rotate-[4deg]",
                     rotation === 2 && "rotate-[-2deg]",
@@ -115,7 +115,7 @@ const ImageWithDecoration = ({
                         }
                     </div>
                 </div>
-                <span className={`absolute ${trianglePosition} w-full h-full z-20`}>{triangle}</span>
+                <span className={`absolute ${trianglePosition} w-[55px] md:w-[110px] z-20`}>{triangle}</span>
             </div>
         </div>
     );
