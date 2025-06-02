@@ -97,15 +97,15 @@ const ImageWithDecoration = ({
                     rotation === 1 && "rotate-[4deg]",
                     rotation === 2 && "rotate-[-2deg]",
                     isLandscape
-                        ? "max-w-[34rem] aspect-[1.3/1]"
+                        ? "max-w-[36rem] aspect-[1.3/1]"
                         : squareSize === "small"
                             ? "max-w-[18rem] aspect-square"
                             : "max-w-[27rem] aspect-square"
                 )}
                 >
-                    <div className="relative w-full h-full">
+                    <div className="relative w-full h-full flex items-center justify-center">
                         <img
-                            className={`relative max-w-[36rem] w-full ${layout === "landscape" ? "aspect-[4/3] md:aspect-[3/2]" : "aspect-square"} object-cover object-center rounded-xl bg-white border border-grayscale-lighter`}
+                            className={`relative max-w-[34rem] w-full ${layout === "landscape" ? "aspect-[1.3/1]" : "aspect-square"} object-cover object-center rounded-xl bg-white border border-grayscale-lighter`}
                             src={src ? src : emptyImg.src} alt={alt ? alt : ""}/>
                         {legend &&
                             <>
