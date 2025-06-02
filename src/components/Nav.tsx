@@ -36,7 +36,7 @@ const Nav = ({navItems, isOpen, setIsOpen}: NavItemsType) => {
                 className={`fixed inset-0 bg-black bg-opacity-50 transition-all duration-300 ease-linear z-[99] ${isOpen ? "visible" : "invisible"}`}></div>
             <nav
                 ref={navRef}
-                className={`absolute z-[999] lg:z-20 top-0 w-full h-screen bg-white md:w-1/2 lg:w-auto lg:h-auto pt-16 px-4 pb-4 overflow-scroll lg:overflow-visible lg:static lg:p-0 ${isOpen ? "right-0" : "-right-full"} transition-all duration-300 ease-linear`}>
+                className={`fixed z-[999] lg:z-20 top-0 w-full h-screen bg-white md:w-1/2 lg:w-auto lg:h-auto pt-16 px-4 pb-4 overflow-scroll lg:overflow-visible lg:static lg:p-0 ${isOpen ? "right-0" : "-right-full"} transition-all duration-300 ease-linear`}>
                 <button
                     type="button"
                     aria-label="close"
