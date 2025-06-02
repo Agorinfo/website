@@ -47,7 +47,7 @@ const RessourceCard = ({id, src, alt, url, category, title, shortDescription, co
                     {category}
                 </span>
                 <h3 className="text-titleCard pb-2 font font-bold">{title}</h3>
-                <p className="text-grayscale-darker mb-4 text-ellipsis line-clamp-6">{shortDescription}</p>
+                <p className="text-grayscale-darker mb-4 text-ellipsis line-clamp-4">{shortDescription}</p>
                 <Link
                     href={url}
                     onMouseEnter={() => setHover(true)}
