@@ -47,7 +47,7 @@ const HeroArchiveService = ({teaser, text, label, url, modules,}: HeroArchiveSer
 
     return (
         <AnimatePresence initial={false} mode={"wait"}>
-            <div className="flex flex-col lg:flex-row items-center gap-8 h-hero text-white pt-8 lg:pt-0 overflow-x-hidden">
+            <div className="flex flex-col lg:flex-row items-center gap-8 lg:h-hero text-white pt-8 lg:pt-0 overflow-x-hidden">
                 <motion.div
                     key={"services"}
                     initial={{opacity: 0}}
