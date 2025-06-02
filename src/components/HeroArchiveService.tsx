@@ -55,7 +55,7 @@ const HeroArchiveService = ({teaser, text, label, url, modules,}: HeroArchiveSer
                     exit={{opacity: 0}}
                     transition={{duration: 0.7}}
                     style={active ? bgStyle : undefined}
-                    className={`relative flex items-center justify-start ${active ? "p-4 md:p-8 lg:p-12" : "py-14 px-4 lg:pl-32 bg-accent"} w-full h-[40rem] rounded-lg overflow-hidden`}
+                    className={`relative flex items-center justify-start ${active ? "p-4 md:p-8 lg:p-12" : "py-14 px-4 lg:pl-32 bg-accent"} w-full lg:h-[40rem] rounded-lg overflow-hidden`}
                 >
                     {!active &&
                         <>
