@@ -50,9 +50,6 @@ const ServiceList = () => {
                 slides: {perView: 2, spacing: 32},
             },
             "(min-width: 1080px)": {
-                slides: {perView: 4, spacing: 32},
-            },
-            "(min-width: 1536px)": {
                 slides: {perView: 3, spacing: 32},
             },
         },

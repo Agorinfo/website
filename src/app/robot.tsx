@@ -7,6 +7,6 @@ export default function robots() {
             allow: '/',
             // disallow: '/private/',
         },
-        sitemap: 'https://www.wenegoce.fr/sitemap.xml',
+        sitemap: 'https://www.agorinfo.fr/sitemap.xml',
     };
 }
