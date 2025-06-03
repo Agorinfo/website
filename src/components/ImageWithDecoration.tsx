@@ -65,7 +65,7 @@ const ImageWithDecoration = ({
     switch (decorationPosition) {
         case "squareOne":
             polygonPosition = "-top-12 -left-4 md:-left-10";
-            trianglePosition = "-bottom-[85%] -right-[5%]";
+            trianglePosition = "bottom-[15%] -right-[5%]";
             break;
         case "squareTwo":
             polygonPosition = "-top-5 md:-top-8 left-24 md:left-[24%]";
