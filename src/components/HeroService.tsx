@@ -54,7 +54,7 @@ const HeroService = ({icon, title, teaser, heroImg, steps, stepImg, logo}: HeroS
                 <div className="lg:pt-28 pb-12 grid md:grid-cols-2 gap-8 md:gap-0 lg:flex-row justify-between">
                     <div className="bg-featured-shine">
                         <div id="service-title" className="">
-                            <h1 className="text-h1 flex items-center gap-8">
+                            <h1 className="text-h1 flex items-center gap-8 pb-8">
                                 <Icon className="text-featured" name={icon} size={56}/>
                                 {title}
                             </h1>
@@ -63,27 +63,27 @@ const HeroService = ({icon, title, teaser, heroImg, steps, stepImg, logo}: HeroS
                     </div>
                     { width === "tablet" || width === "desktop" &&
                         <div className="justify-self-end relative px-8 md:px-0">
-                        <div
-                            className="lg:absolute lg:right-0 p-2 rounded-lg bg-white rotate-[4deg] shadow-featuredTab size-[27rem]">
-                            <img
-                                id="service-hero-img"
-                                className="object-cover object-center w-full h-full"
-                                src={heroImg ? backUrl + heroImg[0].attributes.url : emptyImg.src}
-                                alt={heroImg && heroImg[0].attributes.alternativeText ? heroImg[0].attributes.alternativeText : ""}
-                            />
-                            {logo.data &&
+                            <div
+                                className="lg:absolute lg:right-0 p-2 rounded-lg bg-white rotate-[4deg] shadow-featuredTab size-[27rem]">
                                 <img
-                                    className="w-[8rem] h-[4.2rem] rounded-lg absolute top-6 -left-4"
-                                    src={logo.data ? backUrl + logo.data.attributes.url : emptyImg.src}
-                                    alt={logo.data ? logo.data.attributes.alternativeText : ""}
+                                    id="service-hero-img"
+                                    className="object-cover object-center w-full h-full"
+                                    src={heroImg ? backUrl + heroImg[0].attributes.url : emptyImg.src}
+                                    alt={heroImg && heroImg[0].attributes.alternativeText ? heroImg[0].attributes.alternativeText : ""}
                                 />
-                            }
-                        </div>
-                    </div>}
+                                {logo.data &&
+                                    <img
+                                        className="w-[8rem] h-[4.2rem] rounded-lg absolute top-6 -left-4"
+                                        src={logo.data ? backUrl + logo.data.attributes.url : emptyImg.src}
+                                        alt={logo.data ? logo.data.attributes.alternativeText : ""}
+                                    />
+                                }
+                            </div>
+                        </div>}
                 </div>
             </div>
             {width === "mobile" || width === "tablet" && <div style={{background: `url(${curveMobile.src}) no-repeat top`}}
-                  className="full-width justify-self-end relative px-8 md:px-0">
+                                                              className="full-width justify-self-end relative px-8 md:px-0">
                 <div
                     className="lg:absolute lg:right-0 p-2 rounded-lg bg-white rotate-[4deg] shadow-featuredTab w-full aspect-square">
                     <img
@@ -102,7 +102,7 @@ const HeroService = ({icon, title, teaser, heroImg, steps, stepImg, logo}: HeroS
                 </div>
             </div>}
             { width === "desktop" && <img className="full-width w-full" src={curve.src} alt=""/>}
-            <div className="grid lg:grid-cols-2 py-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 py-12">
                 <div id="service-steps"
                      className="relative flex flex-col gap-14 before:w-px before:h-full before:block before:bg-accent-muted before:absolute before:left-7 before:top-0 before:-z-10 lg:col-start-1 lg:col-end-6 lg:row-start-2 lg:row-end-5">
                     {steps.map(step => (
@@ -118,10 +118,10 @@ const HeroService = ({icon, title, teaser, heroImg, steps, stepImg, logo}: HeroS
                     ))}
                 </div>
                 <img
-                    className="lg:row-start-4 lg:row-end-5 mx-auto"
+                    className="lg:row-start-4 lg:row-end-5 mx-auto max-w-[30.6875rem] max-h-[24rem]"
                     id={"service-steps-img"}
-                    src={stepImg ? backUrl + stepImg.data.attributes.url : emptyImg.src}
-                    alt={stepImg ? stepImg.data.attributes.alternativeText : ""}
+                    src={stepImg.data ? backUrl + stepImg.data.attributes.url : emptyImg.src}
+                    alt={stepImg.data ? stepImg.data.attributes.alternativeText : ""}
                 />
             </div>
         </>
