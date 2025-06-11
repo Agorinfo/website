@@ -49,7 +49,16 @@ const RessourceContent = () => {
                                 content={typeof ressource.content === "string" ? JSON.stringify(ressource.content) : ressource?.content}
                                 blocks={{
                                     paragraph: ({children}) =>
-                                        <p className="mb-8 text-gray-500 [&>strong]:text-accent">{children}</p>,
+                                        <p className="mb-8 text-gray-600 [&>strong]:text-accent">{children}</p>,
+                                    list: ({children}) =>
+                                        <ul className="list-check list-inside pb-12 text-gray-600">{children}</ul>,
+                                    "list-item": ({children}) => (
+                                        <li
+                                            className={`flex items-center gap-2 pb-4 text-[1rem] check before:w-6 before:h-6 before:block before:text-red`}
+                                        >
+                                            {children}
+                                        </li>
+                                    ),
                                     heading: ({children, level}) => {
                                         switch (level) {
                                             case 1:
@@ -94,7 +103,6 @@ const RessourceContent = () => {
                     </div>
                     <div className="max-w-[22.5rem] w-full">
                         <RelatedRessources
-                            categoryId={ressource?.category?.data.id}
                             ressourceId={data[0]?.id}
                         />
                     </div>

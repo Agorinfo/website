@@ -13,6 +13,11 @@ type SolutionCardType = {
     image: {
         data: {
             attributes: {
+                formats: {
+                    medium: {
+                        url: string,
+                    }
+                }
                 url: string,
                 alternativeText: string,
             }
@@ -53,7 +58,7 @@ const Solutions = () => {
                                 <SolutionCard
                                     key={item.id}
                                     url={item.url}
-                                    image={item.image.data ? backUrl + item.image.data.attributes.url : emptyImg.src}
+                                    image={item.image.data ? backUrl + item.image.data.attributes.formats?.medium?.url : emptyImg.src}
                                     alt={item.image.data ? item.image.data.attributes.alternativeText : ""}
                                     category={item.title}
                                     solution={item.label}

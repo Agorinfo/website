@@ -26,34 +26,34 @@ const rotations = ["4deg", "-2deg", "2deg"];
 const backUrl = process.env.NEXT_PUBLIC_BACK_URL!;
 
 const decorativeMotion = {
-    initial: { x: -10, rotate: -2 },
-    animate: { x: 0, rotate: 0 },
-    transition: { duration: 0.6, ease: "easeOut" },
+    initial: {x: -10, rotate: -2},
+    animate: {x: 0, rotate: 0},
+    transition: {duration: 0.6, ease: "easeOut"},
 };
 
 const transforms = {
     square: {
         poligon: [
-            "translate(-40%, -14%)",
-            "translate(-25%, 58%)",
-            "translate(-67%, -11%)",
+            "top-[2%] left-[33%] lg:top-[18%] lg:left-[22%]",
+            "top-[60%] left-[55%] lg:top-[42%] lg:left-[33%]",
+            "top-[2%] left-[2%] lg:top-[18%] lg:left-[10%]"
         ],
         triangle: [
-            "translate(325%, -160%)",
-            "translate(-70%, -380%)",
-            "translate(-35%, -265%)",
+            "top-[68%] left-[83%] lg:top-[60%] lg:left-[72%]",
+            "top-[17%] left-[-4%] lg:top-[30%] lg:left-[3%]",
+            "top-[40%] left-[2%] lg:top-[45%] lg:left-[8%]"
         ],
     },
     landscape: {
         poligon: [
-            "translate(-90%, -14%)",
-            "translate(100%, 50%)",
-            "translate(0%, 40%)",
+            "top-[2%] left-[2%] md:top-[-4%] md:left-[2%] lg:top-[-3%] lg:left-[9%]",
+            "top-[50%] left-[-6%] md:top-[38%] md:left-[-4%] lg:top-[32%] lg:left-[0%]",
+            "top-[2%] left-[2%] md:top-[-5%] md:left-[3%] lg:top-[-6%] lg:left-[9%]"
         ],
         triangle: [
-            "translate(470%, -180%)",
-            "translate(-70%, -330%)",
-            "translate(-60%, -265%)",
+            "top-[52%] left-[85%] md:top-[52%] md:left-[88%] lg:top-[50%] lg:left-[80%]",
+            "top-[17%] left-[82%] md:top-[16%] md:left-[83%] lg:top-[16%] lg:left-[76%]",
+            "top-[40%] left-[2%] md:top-[45%] md:left-[5%] lg:top-[45%] lg:left-[8%]"
         ],
     },
 };
@@ -114,21 +114,17 @@ export default function Slider({images, logo, layout = "square"}: Props) {
                         />
                     </motion.div>
                 </AnimatePresence>
-
-                {/* Decorative Icons */}
-                <span
-                    className="absolute -z-10 left-1/2 top-0 w-[40vw] sm:w-[20vw] transition-all duration-700 ease-linear"
-                    style={{transform: poligonTransform}}
-                >
-                  <Icon name="poligon" className="w-full h-auto"/>
-                </span>
-                <span
-                    className="hidden md:block absolute z-10 transition-all w-[4em] lg:w-[7em] duration-700 ease-linear"
-                    style={{transform: triangleTransform}}
-                >
-                  <Icon name="triangle" className="w-full h-full"/>
-                </span>
             </div>
+            <span
+                className={`absolute z-[5] left-1/2 top-0 w-[169px] md:w-[339px] transition-all duration-700 ease-linear ${poligonTransform}`}
+            >
+              <Icon name="poligonTransparent" className="w-full h-auto"/>
+            </span>
+            <span
+                className={`absolute z-10 transition-all w-[55px] md:w-[80px] lg:w-[110px] duration-700 ease-linear ${triangleTransform}`}
+            >
+              <Icon name="triangle" className="w-full h-full"/>
+            </span>
 
             {/* Nav Buttons */}
             <button

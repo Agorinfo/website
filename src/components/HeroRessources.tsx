@@ -8,11 +8,12 @@ import ImageWithDecoration from "@/components/ImageWithDecoration";
 import {CallToActionImage} from "@/components/CallToAction";
 
 const HeroRessources = () => {
+    const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
     const {data, error, isLoading} = useQuery({
         queryKey: ["global"],
         queryFn: () => getGlobal(),
     })
-
+    console.log(data);
     if (isLoading) return <Loader/>
 
     if (error) return <p>{error?.message}</p>
@@ -20,8 +21,8 @@ const HeroRessources = () => {
     return (
         <>
             <section className="bg-accent-shine full-width">
-                <div className="grid md:grid-cols-2 gap-[5.729vw] xl:gap-[3.5vw] py-28">
-                    <div>
+                <div className="grid md:grid-cols-2 gap-[5.729vw] xl:gap-[3.5vw] pt-16 pb-15">
+                    <div className="py-12">
 
                         {data.archiveRessources?.text &&
                             <BlocksRenderer
@@ -63,8 +64,8 @@ const HeroRessources = () => {
                         }
                     </div>
                     <ImageWithDecoration
-                        src={data?.archiveRessources?.image.data?.url}
-                        alt={data?.archiveRessources?.image.data?.alternativeText}
+                        src={ data?.archiveRessources?.image.data ? backUrl + data?.archiveRessources?.image.data?.attributes.url : ""}
+                        alt={data?.archiveRessources?.image.data?.attributes.alternativeText}
                         layout="square"
                     />
                 </div>

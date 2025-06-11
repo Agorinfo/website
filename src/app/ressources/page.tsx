@@ -8,6 +8,7 @@ import getCategories from "@/actions/getCategories";
 import getFaq from "@/actions/getFaq";
 import SectionFaq from "@/components/SectionFaq";
 import getAllRessources from "@/actions/getAllRessources";
+import SolutionList from "@/sections/SolutionList";
 
 export const generateMetadata = async (): Promise<Metadata> => {
     const {BACK_URL, FRONT_URL} = process.env;
@@ -66,7 +67,11 @@ const Ressources = async () => {
         <HydrationBoundary state={dehydrate(queryClient)}>
             <HeroRessources/>
             <RessourceGridItems/>
-            <SectionFaq />
+            <SectionFaq/>
+            <div className="pt-12 md:pt-24">
+                <h2 className="text-h3 text-center font-bold">Nos applications dédiées au secteur agricole</h2>
+                <SolutionList/>
+            </div>
         </HydrationBoundary>
     );
 };

@@ -13,14 +13,14 @@ import getGlobal from "@/actions/getGlobal";
 import TeamsDescription from "@/sections/TeamsDescription";
 
 export const generateMetadata = async (): Promise<Metadata> => {
-    const {BACK_URL} = process.env;
+    const {BACK_URL,FRONT_URL} = process.env;
     const about = await getAbout();
     const global = await getGlobal();
     const metas = about.metas
 
     return {
-        metadataBase: new URL(metas.canonicalUrl),
-        title: metas.meta_title || "Agorinfo, éditeur de solution logicielles métier",
+        metadataBase: new URL(FRONT_URL + "/qui-sommes-nous"),
+        title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
         description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
         openGraph: {
             title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",

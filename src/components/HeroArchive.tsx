@@ -163,7 +163,7 @@ const HeroArchive = ({teaser, text, label, url, modules,}: HeroArchiveType) => {
                                             href={"solutions/" + active}
                                             className="link-normal-white pt-8 inline-flex items-center gap-2"
                                         >
-                                            {label}
+                                            {heroArchive.label}
                                             <Icon name="arrowRight"/>
                                         </a>
                                     </motion.div>

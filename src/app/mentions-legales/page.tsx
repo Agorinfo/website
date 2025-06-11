@@ -8,10 +8,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
     const legal = await getLegalNotices();
     const global = await getGlobal();
     const metas = await legal.metas;
-    const {BACK_URL} = process.env;
+    const {BACK_URL,FRONT_URL} = process.env;
 
     return {
-        metadataBase: new URL(metas?.canonicalUrl),
+        metadataBase: new URL(FRONT_URL + "/mentions-legales"),
         title: metas.meta_title || "Agorinfo, éditeur de solution logicielles métier",
         description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
         openGraph: {

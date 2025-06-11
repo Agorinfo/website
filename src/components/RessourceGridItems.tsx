@@ -50,7 +50,6 @@ const RessourceGridItems = () => {
     if (isLoading) return <Loader/>;
     if (error) return <p>{error.message}</p>;
 
-
     return (
         <section id={"ressources"} className="py-12">
             <h2 className="text-h2 text-center font-bold pb-6">Nos ressources</h2>
@@ -87,9 +86,9 @@ const RessourceGridItems = () => {
                                     categoryColor={ressource.category?.data.attributes.color}
                                     src={
                                         ressource.featuredImage?.data
-                                            ? ressource.featuredImage.data.attributes.formats?.thumbnail
+                                            ? ressource.featuredImage.data.attributes.formats?.small
                                                 ? backUrl +
-                                                ressource.featuredImage.data.attributes.formats.thumbnail.url
+                                                ressource.featuredImage.data.attributes.formats.small.url
                                                 : backUrl + ressource.featuredImage.data.attributes.url
                                             : emptyImg.src
                                     }

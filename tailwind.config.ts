@@ -90,11 +90,15 @@ const config: Config = {
             },
             fontSize: {
                 h1: ["clamp(2.2rem, 1.915rem + 1.425vw, 3.625rem)", {
-                    lineHeight: "1.1",
+                    lineHeight: "1.2",
                     fontWeight:700
                 }],
-                h2: "clamp(2rem, 1.8684rem + 0.6579vw, 2.5rem)",
-                h3: "clamp(1.375rem, 1.2434rem + 0.6579vw, 1.875rem)",
+                h2: ["clamp(2rem, 1.8684rem + 0.6579vw, 2.5rem)", {
+                    lineHeight: "1.2",
+                }],
+                h3: ["clamp(1.375rem, 1.2434rem + 0.6579vw, 1.875rem)", {
+                    lineHeight: "1.2",
+                }],
                 h4: "clamp(1.125rem, 1.0263rem + 0.4934vw, 1.5rem)",
                 h5: "clamp(1.125rem, 1.0921rem + 0.1645vw, 1.25rem)",
                 h6: "1.125rem",

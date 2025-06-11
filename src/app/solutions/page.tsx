@@ -62,7 +62,7 @@ const Solutions = async () => {
             <HeroArchiveSolutions />
             <Strengths />
             <CallToActionNewsletter />
-            <div className="overflow-x-hidden">
+            <div className="">
                 <ServiceList />
             </div>
             <ReassuranceArchiveSolution />

@@ -67,8 +67,8 @@ const SectionExpertises = () => {
                 ))}
             </div>
             <CallToAction
-                title={expertises.cta.title}
-                text={expertises.cta.text}
+                title={expertises.cta?.title}
+                text={expertises.cta?.text}
                 headingClassName='text-accent'
                 buttonClassName='btn-accent'
                 buttonLabel="En savoir plus"

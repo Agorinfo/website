@@ -33,7 +33,7 @@ const ImageWithDecoration = ({
         >
             <path
                 d="M183.018 1.38818L243.444 106.888L183.018 212.388H62.1777L1.75 106.888L62.1777 1.38818H183.018Z"
-                stroke="#3A581C"
+                stroke="#663B8E"
                 strokeWidth="2"
             />
         </svg>;
@@ -42,7 +42,7 @@ const ImageWithDecoration = ({
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 339 297" fill="none">
             <path
                 d="M253.55 296.13H84.5475L0.0463867 148.315L84.5475 0.499039L253.55 0.499023L338.051 148.315L253.55 296.13Z"
-                fill="#3A581C"/>
+                fill="#663B8E"/>
         </svg>;
 
     const triangle =
@@ -65,7 +65,7 @@ const ImageWithDecoration = ({
     switch (decorationPosition) {
         case "squareOne":
             polygonPosition = "-top-12 -left-4 md:-left-10";
-            trianglePosition = "bottom-[15%] -right-[5%]";
+            trianglePosition = "-bottom-[10%] lg:-bottom-[20%] -right-[5%] lg:-right-[15%]";
             break;
         case "squareTwo":
             polygonPosition = "-top-5 md:-top-8 left-24 md:left-[24%]";
@@ -92,7 +92,7 @@ const ImageWithDecoration = ({
         >
             <div className="relative">
                 <span
-                    className={`absolute ${polygonPosition} w-[10rem] lg:w-[21rem]`}>{isLandscape ? landscapePolygon : polygon}</span>
+                    className={`absolute ${polygonPosition} ${layout === "square" && squareSize === "small" ? "w-[10rem] lg:w-[15rem]" : "w-[10rem] lg:w-[21rem]"}`}>{isLandscape ? landscapePolygon : polygon}</span>
                 <div className={clsx("relative w-full bg-white shadow-slide rounded-2xl p-3 z-10",
                     rotation === 1 && "rotate-[4deg]",
                     rotation === 2 && "rotate-[-2deg]",
@@ -115,7 +115,7 @@ const ImageWithDecoration = ({
                         }
                     </div>
                 </div>
-                <span className={`absolute ${trianglePosition} w-[55px] md:w-[110px] z-20`}>{triangle}</span>
+                <span className={`absolute ${trianglePosition} ${layout === "square" && squareSize === "small" ? "w-[70px] lg:w-[6.8rem]" : "w-[55px] md:w-[110px]"} z-20`}>{triangle}</span>
             </div>
         </div>
     );

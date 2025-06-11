@@ -3,6 +3,7 @@ import React from 'react';
 import {useQuery} from "@tanstack/react-query";
 import getExpertise from "@/actions/getExpertise";
 import Content from "@/components/Content";
+import {LoaderButton} from "@/components/Loader";
 
 const HeroExpertises = () => {
     const {data: expertises, error, isLoading} = useQuery({
@@ -10,7 +11,7 @@ const HeroExpertises = () => {
         queryFn: () => getExpertise(),
     })
 
-    if (isLoading) return <p><h1>Loading...</h1></p>
+    if (isLoading) return <p><LoaderButton/></p>
 
     if (error) return <p>{error.message}</p>
 
