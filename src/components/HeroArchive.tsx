@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Button, {ModalButton} from "@/components/Button";
+import {ModalButton} from "@/components/Button";
 import SidebarCard from "@/components/SidebarCard";
-import Modal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
 import Content from "@/components/Content";
 import {HeroArchiveType} from "@/utils/types";
@@ -9,7 +8,6 @@ import InformationCard from "@/components/InformationCard";
 import {createColorPalette} from "@/lib/createColorPalette";
 import {AnimatePresence, motion} from "framer-motion";
 import Icon from "@/components/icons/Icon";
-import RelatedCard from "@/components/RelatedCard";
 import {useKeenSlider} from "keen-slider/react";
 
 const initialColors = {
