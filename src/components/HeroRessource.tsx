@@ -26,7 +26,7 @@ const HeroRessource = () => {
     return (
         <section
             className="full-width text-white"
-            style={{backgroundColor: colors.shadow}}
+            style={{backgroundColor: colors.border}}
         >
             <div className="grid md:grid-cols-2 gap-[5.729vw] xl:gap-[3.5vw] py-8 md:py-16 lg:py-32">
                 <div>

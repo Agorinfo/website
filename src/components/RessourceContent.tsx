@@ -8,7 +8,7 @@ import Loader from "@/components/Loader";
 import {ArrowLeft} from "@phosphor-icons/react";
 import RelatedRessources from "@/components/RelatedRessources";
 import ImageWithDecoration from "@/components/ImageWithDecoration";
-import CallToAction from "@/components/CallToAction";
+import CallToAction, {CallToActionRessource} from "@/components/CallToAction";
 import getGlobal from "@/actions/getGlobal";
 
 const RessourceContent = () => {
@@ -67,7 +67,7 @@ const RessourceContent = () => {
                                             case 2:
                                                 return <>
                                                     <h2
-                                                        className={"pb-8 text-h1 font-bold md:pb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}
+                                                        className={"pb-8 text-h2 font-bold md:pb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}
                                                     </h2>
                                                 </>
                                             case 3:
@@ -108,13 +108,14 @@ const RessourceContent = () => {
                     </div>
                 </div>
             </div>
-            { global.data.archiveRessources && global.data.archiveRessources?.cta.title && global.data.archiveRessources?.cta.text && 
-                <CallToAction
-                title={global.data.archiveRessources?.cta.title}
-                text={global.data.archiveRessources?.cta.text}
+            {ressource?.ctaTitle && ressource?.ctaText && ressource?.ctaLabelButton && ressource?.ctaLink &&
+                <CallToActionRessource
+                title={ressource?.ctaTitle}
+                text={ressource?.ctaText}
                 headingClassName="text-accent"
-                buttonClassName="btn-accent"
-                buttonLabel="Voir le témoignage"
+                buttonClassName={"btn-accent"}
+                buttonLabel={ressource?.ctaLabelButton}
+                url={ressource?.ctaLink}
                 noBg
             />}
             <div>

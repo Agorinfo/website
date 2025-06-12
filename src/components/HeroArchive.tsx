@@ -29,17 +29,8 @@ const HeroArchive = ({teaser, text, label, url, modules,}: HeroArchiveType) => {
     const [ref] = useKeenSlider<HTMLDivElement>({
         breakpoints: {
             "(min-width: 400px)": {
-                slides: {perView: 3, spacing: 16},
-            },
-            // "(min-width: 768px)": {
-            //     slides: {perView: 2, spacing: 32},
-            // },
-            // "(min-width: 1080px)": {
-            //     slides: {perView: 4, spacing: 32},
-            // },
-            // "(min-width: 1536px)": {
-            //     slides: {perView: 3, spacing: 32},
-            // },
+                slides: {perView: 2, spacing: 16},
+            }
         },
         slides: {
             perView: 1,

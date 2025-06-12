@@ -73,7 +73,7 @@ const HeroRessources = () => {
             <CallToActionImage
                 title={data?.archiveRessources?.cta?.title}
                 text={data?.archiveRessources?.cta?.text}
-                label="En savoir plus"
+                label={data?.archiveRessources?.cta?.label}
                 url={data?.archiveRessources?.cta?.url}
                 image={data?.archiveRessources?.cta?.image}
                 position={data?.archiveRessources?.cta?.position}
