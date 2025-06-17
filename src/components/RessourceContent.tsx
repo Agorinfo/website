@@ -55,7 +55,7 @@ const RessourceContent = () => {
                                         <ul className="list-disc list-inside pb-12 text-gray-600">{children}</ul>,
                                     "list-item": ({children}) => (
                                         <li
-                                            className={`flex items-center gap-2 pb-4 text-[1rem] check before:w-6 before:h-6 before:block before:text-red`}
+                                            className={`flex items-center gap-2 pb-4 text-[1rem]`}
                                         >
                                             {children}
                                         </li>
