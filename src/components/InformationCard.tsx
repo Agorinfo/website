@@ -77,11 +77,11 @@ const InformationCard = ({logo, data, modules, badge, icon, colors}: Information
                         {badge}
                     </span>}
                 <p style={{color: colors?.base}}
-                   className="hidden lg:block font-bold pb-2"
+                   className="font-bold pb-2"
                 >
                     {data.title}
                 </p>
-                <p className="hidden lg:block pb-8">{data.text}</p>
+                <p className="pb-8">{data.text}</p>
                 <ul className="grid lg:grid-cols-2 gap-x-6 gap-y-2">
                     {modules && modules.map((module) => (
                         <li

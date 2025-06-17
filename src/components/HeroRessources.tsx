@@ -43,18 +43,19 @@ const HeroRessources = () => {
                                         switch (level) {
                                             case 1:
                                                 return <h1
-                                                    className={"mb-8 font-bold text-h1 md:mb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}</h1>
+                                                    className={"mb-8 font-bold text-h1 md:mb-12 [&>em]:text-featured [&>em]:not-italic"}
+                                                >
+                                                    {children}
+                                                </h1>
                                             case 2:
-                                                return <>
-                                                    <h2
+                                                return<h2
                                                         className={"pb-8 text-h1 font-bold md:pb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}
                                                     </h2>
-                                                </>
                                             case 3:
                                             case 4:
                                             case 5:
                                             case 6:
-                                                return <h3 className="text-h3">{children}</h3>
+                                                return <h3 className="text-h3 pb-4">{children}</h3>
                                             default:
                                                 return <h1 className="text-h1">{children}</h1>
                                         }

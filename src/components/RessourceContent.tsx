@@ -1,4 +1,5 @@
 "use client";
+
 import React from 'react';
 import {BlocksRenderer} from "@strapi/blocks-react-renderer";
 import {useParams} from "next/navigation";
@@ -74,7 +75,7 @@ const RessourceContent = () => {
                                             case 4:
                                             case 5:
                                             case 6:
-                                                return <h3 className="text-h3">{children}</h3>
+                                                return <h3 className="text-h3 pb-4">{children}</h3>
                                             default:
                                                 return <h1 className="text-h1">{children}</h1>
                                         }
