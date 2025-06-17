@@ -52,7 +52,7 @@ const RessourceContent = () => {
                                     paragraph: ({children}) =>
                                         <p className="mb-8 text-gray-600 [&>strong]:text-accent">{children}</p>,
                                     list: ({children}) =>
-                                        <ul className="list-check list-inside pb-12 text-gray-600">{children}</ul>,
+                                        <ul className="list-disc list-inside pb-12 text-gray-600">{children}</ul>,
                                     "list-item": ({children}) => (
                                         <li
                                             className={`flex items-center gap-2 pb-4 text-[1rem] check before:w-6 before:h-6 before:block before:text-red`}
