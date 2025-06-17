@@ -86,7 +86,7 @@ const ServiceList = () => {
                         }
                         disabled={currentSlide === 0}
                         className={clsx(
-                            "absolute top-1/2 left-1 -translate-y-1/2 z-20 text-featured-muted disabled:opacity-0 disabled:pointer-events-none"
+                            "absolute top-1/2 left-1 -translate-y-1/2 z-20 text-featured-muted disabled:opacity-0 disabled:pointer-events-none lg:hidden"
                         )}
                         aria-label="Previous slide"
                     >
@@ -101,7 +101,7 @@ const ServiceList = () => {
                             instanceRef.current.track.details.slides.length - 1
                         }
                         className={clsx(
-                            "absolute top-1/2 right-1 -translate-y-1/2 z-20 text-featured-muted", "disabled:opacity-0 disabled:pointer-events-none"
+                            "absolute top-1/2 right-1 -translate-y-1/2 z-20 text-featured-muted", "disabled:opacity-0 disabled:pointer-events-none lg:hidden"
                         )}
                         aria-label="Next slide"
                     >
