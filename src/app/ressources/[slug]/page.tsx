@@ -1,17 +1,15 @@
 import React from 'react';
 import type {Metadata} from "next";
 import getGlobal from "@/actions/getGlobal";
-import getService from "@/actions/getService";
 import {dehydrate, HydrationBoundary, QueryClient} from "@tanstack/react-query";
 import getRessource from "@/actions/getRessource";
 import HeroRessource from "@/components/HeroRessource";
 import RessourceContent from "@/components/RessourceContent";
-import CallToAction from "@/components/CallToAction";
 
 export const generateMetadata = async ({params}: { params: { slug: string } }): Promise<Metadata> => {
     const {BACK_URL, FRONT_URL} = process.env;
     const global = await getGlobal();
-    const ressource = await getService(params.slug);
+    const ressource = await getRessource(params.slug);
     const metas = ressource[0]?.attributes.metas
 
     return {
