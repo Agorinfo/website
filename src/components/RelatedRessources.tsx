@@ -12,6 +12,7 @@ const RelatedRessources = ({ressourceId}: {ressourceId: number}) => {
         queryFn: async () => await getRelatedRessources( ressourceId),
     });
 
+
     if (isLoading) return <Loader />
 
     if (error) return <p>{error?.message}</p>
@@ -33,12 +34,16 @@ const RelatedRessources = ({ressourceId}: {ressourceId: number}) => {
                                 alt={ressource.attributes.featuredImage?.data?.attributes?.alternativeText}
                                 category={ressource.attributes.category?.data?.attributes.name}
                                 title={ressource.attributes.title}
-                                date={ressource.attributes.publishedAt}
+                                date={new Date(ressource.attributes.publishedAt).toLocaleDateString("fr-FR", {
+                                    year: "numeric",
+                                    month: "numeric",
+                                    day: "numeric",
+                                })}
                             />
                         ))}
                     </div>
                     <div className="text-center">
-                        <Link href={`/ressources`} className="btn btn-accent">
+                        <Link href={`/ressources/#ressources`} className="btn btn-accent">
                             Voir plus
                         </Link>
                     </div>

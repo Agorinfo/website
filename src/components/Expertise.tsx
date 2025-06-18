@@ -25,7 +25,7 @@ const Expertise = ({index, icon, title, text, headingClassName}: ExpertiseType) 
                                 className="lg:hidden max-w-[14rem] w-full h-full object-cover"
                             />}
                     </div>
-                    <div className="max-w-[35.6rem] w-full">
+                    <div className={`${!icon ? "" :"max-w-[35.6rem]"} w-full`}>
                         <div
                             className="flex flex-col justify-center lg:py-12 lg:text-left xl:py-0">
                             <BlocksRenderer

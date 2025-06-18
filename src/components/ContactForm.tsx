@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import useModalStore from "@/store/ModalStore";
 
 const ContactForm = () => {
+    const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
     const url = process.env.NEXT_PUBLIC_FRONT_URL;
     const [active, setActive] = useState("formulaire");
     const { closeModal } = useModalStore();
@@ -49,7 +50,7 @@ const ContactForm = () => {
         queryFn: () => getGlobal()
     })
 
-    const {siteName, street, adressComp, zipCode, city, tel, email} = data;
+    const {siteName, street, adressComp, zipCode, city, tel, email, logo} = data;
 
     const telUrl= tel.replaceAll(" ", "").substring(1);
 
@@ -79,8 +80,8 @@ const ContactForm = () => {
             <div
                 className={`p-8 flex flex-col justify-between items-start lg:border-r lg:border-grayscale-lighter lg:w-[33.333vw] max-w-[32rem] lg:block ${active === "coordonnees" ? "block" : "hidden lg:block"}`}>
                 <div className="">
-                    <div className="pb-6 hidden lg:block">
-                        <img src="/logotype.webp" alt="Agorinfo"/>
+                    <div className="pb-6 hidden lg:block w-[17.5rem]">
+                        <img src={backUrl + logo.data.attributes.url} alt="Agorinfo"/>
                     </div>
                     <div className="flex flex-col gap-2 pb-6">
                         <h3 className="text-h4 font-bold">{siteName}</h3>

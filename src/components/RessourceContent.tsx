@@ -1,5 +1,4 @@
 "use client";
-
 import React from 'react';
 import {BlocksRenderer} from "@strapi/blocks-react-renderer";
 import {useParams} from "next/navigation";
@@ -37,7 +36,7 @@ const RessourceContent = () => {
             <div className="py-16">
                 <div>
                     <button
-                        className="text-featured"
+                        className="text-featured mb-16"
                         onClick={() => window.history.back()}
                     >
                         <ArrowLeft size={24}/>
@@ -77,7 +76,7 @@ const RessourceContent = () => {
                                             case 6:
                                                 return <h3 className="text-h3 pb-4">{children}</h3>
                                             default:
-                                                return <h1 className="text-h1">{children}</h1>
+                                                return <h1 className="text-h1 pb-4">{children}</h1>
                                         }
                                     },
                                     image: ({image}) => {
@@ -111,17 +110,17 @@ const RessourceContent = () => {
             </div>
             {ressource?.ctaTitle && ressource?.ctaText && ressource?.ctaLabelButton && ressource?.ctaLink &&
                 <CallToActionRessource
-                title={ressource?.ctaTitle}
-                text={ressource?.ctaText}
-                headingClassName="text-accent"
-                buttonClassName={"btn-accent"}
-                buttonLabel={ressource?.ctaLabelButton}
-                url={ressource?.ctaLink}
-                noBg
-            />}
+                    title={ressource?.ctaTitle}
+                    text={ressource?.ctaText}
+                    headingClassName="text-accent"
+                    buttonClassName={"btn-accent"}
+                    buttonLabel={ressource?.ctaLabelButton}
+                    url={ressource?.ctaLink}
+                    noBg
+                />}
             <div>
                 <button
-                    className="text-featured"
+                    className="text-featured pb-8"
                     onClick={() => window.history.back()}
                 >
                     <ArrowLeft size={24}/>

@@ -1,61 +1,72 @@
 "use client";
 import React from 'react';
-import ImageWithDecoration from "@/components/ImageWithDecoration";
+import {BlocksRenderer} from "@strapi/blocks-react-renderer";
 import {useQuery} from "@tanstack/react-query";
-import getRessource from "@/actions/getRessource";
-import {useParams} from "next/navigation";
+import getGlobal from "@/actions/getGlobal";
 import Loader from "@/components/Loader";
-import {createColorPalette} from "@/lib/createColorPalette";
+import ImageWithDecoration from "@/components/ImageWithDecoration";
 
-const HeroRessource = () => {
-    const {slug} = useParams();
+const HeroRessources = () => {
     const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
     const {data, error, isLoading} = useQuery({
-        queryKey: ["ressource", slug],
-        queryFn: () => getRessource(slug as string),
-    });
+        queryKey: ["global"],
+        queryFn: () => getGlobal(),
+    })
 
-    const ressource = data[0]?.attributes;
+    if(isLoading) return  <Loader />
 
-    const colors = createColorPalette(ressource?.category?.data?.attributes?.color);
-
-    if (isLoading) return <Loader/>
-
-    if (error) return <p>{error?.message}</p>
+    if(error) return <p>{ error?.message }</p>
 
     return (
-        <section
-            className="relative full-width text-white"
-        >
-            <div
-                className="full-width absolute inset-0 -z-10 md:bg-none"
-                style={{
-                    background: `linear-gradient(180deg, ${colors.border} 65%, white 35%)`,
-                }}
-            >
-                <div className="hidden md:block w-full h-full" style={{backgroundColor: colors.border}}/>
-            </div>
-            <div className="grid md:grid-cols-2 gap-[5.729vw] xl:gap-[3.5vw] py-8 md:py-16 lg:py-24">
-                <div>
-                    <span className={"font-bold inline-block pb-6"}>{ressource?.category?.data.attributes.name}</span>
-                    <h1 className={"text-h1 font-bold pb-12"}>{ressource?.title}</h1>
-                    <p>{ressource?.shortDescription}</p>
+        <section className="bg-accent-shine full-width">
+            <div className="grid md:grid-cols-2 gap-[5.729vw] xl:gap-[3.5vw] pt-16 pb-15">
+                <div className="py-12">
+
+                    {data.archiveRessources?.text && <BlocksRenderer
+                        content={typeof data.archiveRessources.text === "string" ? JSON.parse(data.archiveRessources.text) : data.archiveRessources.text}
+                        blocks={{
+                            list: ({children}) =>
+                                <ul className="list-check list-inside pb-12">{children}</ul>,
+                            "list-item": ({children}) => (
+                                <li
+                                    className={`flex items-center gap-2 pb-4 text-[1rem] check before:w-6 before:h-6 before:block before:text-red`}
+                                >
+                                    {children}
+                                </li>
+                            ),
+                            paragraph: ({children}) =>
+                                <p className="pb-2 text-gray-500 lg:w-4/5 [&>strong]:text-accent">{children}</p>,
+                            heading: ({children, level}) => {
+                                switch (level) {
+                                    case 1:
+                                        return <h1
+                                            className={"mb-8 font-bold text-h1 md:mb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}</h1>
+                                    case 2:
+                                        return <>
+                                            <h2
+                                                className={"pb-8 text-h1 font-bold md:pb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}
+                                            </h2>
+                                        </>
+                                    case 3:
+                                    case 4:
+                                    case 5:
+                                    case 6:
+                                        return <h3 className="text-h3">{children}</h3>
+                                    default:
+                                        return <h1 className="text-h1">{children}</h1>
+                                }
+                            }
+                        }}
+                    />}
                 </div>
                 <ImageWithDecoration
-                    src={ressource?.featuredImage?.data?.attributes?.formats?.medium?.url
-                        ? backUrl + ressource?.featuredImage?.data?.attributes?.formats?.medium?.url
-                        : ressource?.featuredImage?.data?.attributes?.url
-                            ? backUrl + ressource?.featuredImage?.data?.attributes?.url
-                            : null
-                    }
-                    alt={ressource?.featuredImage?.data?.attributes?.alternativeText}
+                    src={ data?.archiveRessources?.image.data ? backUrl + data?.archiveRessources?.image.data?.attributes.url : ""}
+                    alt={data?.archiveRessources?.image.data?.attributes.alternativeText}
                     layout="square"
-                    decorationPosition="squareTwo"
-                    squareSize="large"
                 />
             </div>
         </section>
     );
 };
 
-export default HeroRessource;
+export default HeroRessources;

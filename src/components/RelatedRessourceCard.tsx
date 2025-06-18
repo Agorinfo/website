@@ -36,7 +36,7 @@ const RelatedRessourceCard = ({thumbnail, alt, category, title, date, color, slu
                 >
                     {category}
                 </span>
-                <h3 className="text-h5 font-bold pb-4">{title}</h3>
+                <h3 className="font-bold pb-4">{title}</h3>
                 <p>{date}</p>
             </div>
         </Link>
