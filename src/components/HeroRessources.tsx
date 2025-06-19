@@ -38,7 +38,7 @@ const HeroRessources = () => {
                                         </li>
                                     ),
                                     paragraph: ({children}) =>
-                                        <p className="mb-8 text-gray-500 md:mb-12 lg:w-4/5 [&>strong]:text-accent">{children}</p>,
+                                        <p className="pb-2 text-gray-500 lg:w-4/5 [&>strong]:text-accent">{children}</p>,
                                     heading: ({children, level}) => {
                                         switch (level) {
                                             case 1:
