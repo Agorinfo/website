@@ -38,7 +38,10 @@ const RessourceCard = ({id, src, alt, url, category, title, shortDescription, co
             className={clsx("rounded-lg bg-white border-2 overflow-hidden flex flex-col")}
              style={{borderColor: colors.border}}
         >
-            <img className="h-[12rem] w-full object-cover" src={src ? src : emptyImg.src} alt={alt ? alt : ""}/>
+            <img
+                className="h-[12rem] w-full object-cover" src={src ? src : emptyImg.src}
+                alt={alt ? alt : ""}
+            />
             <div className="flex flex-col items-start justify-between flex-auto p-4">
                 <span
                     className={clsx("inline-block px-3 py-1.5 text-white rounded-lg mb-2")}
@@ -55,7 +58,7 @@ const RessourceCard = ({id, src, alt, url, category, title, shortDescription, co
                     className={clsx("btn w-full border")}
                     style={{borderColor: hover ? colors.base : "#E7E7E7", color: hover ? colors.hover : colors.border}}
                 >
-                    {category.toLowerCase() === "article" ? "Lire l'article" : "Lire le témoignage"}
+                    {category.toLowerCase() === "article" ? "Lire l'article" : category.toLowerCase() === "témoignage" ? "Lire le témoignage" : "Lire le contenu"}
                 </Link>
             </div>
         </motion.div>
