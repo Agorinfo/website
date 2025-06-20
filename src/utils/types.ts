@@ -256,6 +256,7 @@ export type HeroHomeType = {
     url1: string;
     label2: string;
     url2: string;
+    noBg?: boolean;
 }
 
 export type HeroPageType = {

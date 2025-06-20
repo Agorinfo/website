@@ -8,12 +8,12 @@ import useScreenSize from "@/utils/useScreenSize";
 import curve from "@/assets/about-curve-mobile.png";
 import curveTablet from "@/assets/about-curve-tablet.png";
 
-const Hero = ({images, teaser, content, label1, url1, label2, url2}: HeroHomeType) => {
+const Hero = ({images, teaser, content, label1, url1, label2, url2, noBg}: HeroHomeType) => {
     const screen = useScreenSize();
 
     return (
         <>
-            <div className="bg-featured-shine full-width lg:h-hero">
+            <div className={`bg-featured-shine full-width lg:h-hero`}>
                 <section
                     className="mt-8 pb-6 sm:pb-20 lg:pb-12 lg:h-hero grid lg:grid-cols-2 gap-16 md:gap-[1.729vw] lg:flex-row">
                     <Content

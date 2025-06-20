@@ -23,7 +23,7 @@ const Footer = ({}) => {
     if (error) return <p>{error.message}</p>
     return (
         <footer className="content-grid">
-            <div className="grid grid-cols-2 gap-8 md:gap-0 md:grid-cols-6 border-t pt-12">
+            <div className="grid grid-cols-2 gap-8 md:gap-0 md:grid-cols-7 border-t pt-12">
                 <div className="col-span-2">
                     <div className="pb-4 w-[160px]">
                         <img className="w-full" src={data.logo.data ? backUrl + data.logo.data.attributes.url : emptyImg.src}
