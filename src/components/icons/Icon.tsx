@@ -125,6 +125,9 @@ const Icon = ({name, size, className}:{name: string, size?: number, className?: 
         case "bookmark":
             icon = <BookmarkSimple className={className} size={size} />
             break
+        case "bookmarkSimple":
+            icon = <BookmarkSimple className={className} size={size} />
+            break
         case "hardDrives":
             icon = <HardDrives className={className} size={size} />
             break
