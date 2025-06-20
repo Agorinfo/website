@@ -13,7 +13,6 @@ const HeroRessources = () => {
         queryKey: ["global"],
         queryFn: () => getGlobal(),
     })
-    console.log(data);
     if (isLoading) return <Loader/>
 
     if (error) return <p>{error?.message}</p>

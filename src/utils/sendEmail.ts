@@ -5,7 +5,6 @@ export async function sendMail({subject, body}: {
     body: string
 }) {
     const {SMTP_EMAIL, SMTP_PASSWORD, FROM_EMAIL, EMAIL, SMTP_HOST,SMTP_PORT,} = process.env;
-    console.log("Test JCH", SMTP_EMAIL, SMTP_PASSWORD, FROM_EMAIL, EMAIL, SMTP_HOST, SMTP_PORT);
     const transport = nodemailer.createTransport({
         host: "mail.agorinfo.fr",
         port: 465,
