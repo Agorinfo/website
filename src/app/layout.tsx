@@ -1,39 +1,58 @@
-import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import getGlobal from "@/actions/getGlobal";
-import {dehydrate, HydrationBoundary, QueryClient} from "@tanstack/react-query";
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 import UseReactQuery from "@/utils/useReactQuery";
 import getMenu from "@/actions/getMenu";
 import Header from "@/sections/Header";
 import Footer from "@/sections/Footer";
 import getFooter from "@/actions/getFooter";
-import {Toaster} from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Modal from "@/components/Modal";
+import Script from "next/script"; // <-- Ici !
 
-const inter = Inter({subsets: ["latin"]});
+const inter = Inter({ subsets: ["latin"] });
 
 export default async function RootLayout({
                                              children,
                                          }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const queryClient = new QueryClient()
+    const queryClient = new QueryClient();
     await queryClient.prefetchQuery({
         queryKey: ["global"],
         queryFn: () => getGlobal(),
-    })
+    });
     await queryClient.prefetchQuery({
         queryKey: ["menu"],
         queryFn: () => getMenu(),
-    })
+    });
     await queryClient.prefetchQuery({
         queryKey: ["footer"],
         queryFn: () => getFooter(),
-    })
+    });
+
     return (
         <html lang="fr" className="scroll-smooth overflow-x-clip">
+        <head>
+            {/* Matomo */}
+            <Script id="matomo" strategy="afterInteractive">
+                {`
+                    var _paq = window._paq = window._paq || [];
+                    _paq.push(['trackPageView']);
+                    _paq.push(['enableLinkTracking']);
+                    (function() {
+                        var u="//matomo.agorinfo.fr/";
+                        _paq.push(['setTrackerUrl', u+'matomo.php']);
+                        _paq.push(['setSiteId', '1']);
+                        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+                    })();
+                `}
+            </Script>
+        </head>
         <body className={`${inter.className} overflow-x-clip`}>
         <UseReactQuery>
             <HydrationBoundary state={dehydrate(queryClient)}>
