@@ -71,9 +71,14 @@ const RessourceContent = () => {
                                 content={typeof ressource.content === "string" ? JSON.stringify(ressource.content) : ressource?.content}
                                 blocks={{
                                     paragraph: ({children}) =>
-                                        <p className="mb-8 text-gray-600 [&>strong]:text-accent">{children}</p>,
-                                    list: ({children}) =>
-                                        <ul className="list-disc list-inside pb-12 text-gray-600">{children}</ul>,
+                                        <p className="mb-8 text-gray-600 [&>strong]:text-featured">{children}</p>,
+                                    list: ({children, format}) => {
+                                            if(format === "ordered") {
+                                                return <ol className="list-decimal list-inside pb-12 text-gray-600">{children}</ol>
+                                            } else {
+                                                return <ul className="list-disc list-inside pb-12 text-gray-600">{children}</ul>
+                                            }
+                                    },
                                     "list-item": ({children}) => (
                                         <li
                                             className={`flex items-center gap-2 pb-4 text-[1rem]`}
@@ -120,7 +125,6 @@ const RessourceContent = () => {
                                         );
                                     },
                                     link: ({ children, url }) => {
-                                        console.log(children, url)
                                         if (url.startsWith("https://www.youtube.com/embed/")) {
                                             const videoId = url.split("/embed/")[1].split("?")[0];
                                             const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
@@ -142,7 +146,9 @@ const RessourceContent = () => {
                                                 {children}
                                             </a>
                                         );
-                                    }
+                                    },
+                                    quote: ({children}) =>
+                                        <blockquote className="p-6 bg-accent-shine italic  [&>strong]:text-accent">{children}</blockquote>,
                                 }}
                             />
                         }

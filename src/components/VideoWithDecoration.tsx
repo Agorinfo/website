@@ -29,15 +29,15 @@ const VideoWithDecoration = ({
 
     if (!src || !videoUrl || !legend) return null;
     return (
-        <div className={clsx("mb-24")}
+        <span className={clsx("block mb-24")}
         >
-            <div className="relative mx-auto max-w-[38.3rem] aspect-[1.64/1] md:aspect-[1.58/1]">
+            <span className="relative block mx-auto max-w-[38.3rem] aspect-[1.64/1] md:aspect-[1.58/1]">
                 <span
                     className={`absolute -bottom-[14%] -left-[7%] md:-left-[11%] w-1/3 md:w-[229px]`}>{polygon}</span>
-                <div
-                    className={clsx("relative w-full bg-white shadow-slide rounded-2xl p-3 z-10 aspect-[1.64/1] md:aspect-[1.58/1] max-w-[38.3rem]",)}
+                <span
+                    className={clsx("relative block w-full bg-white shadow-slide rounded-2xl p-3 z-10 aspect-[1.64/1] md:aspect-[1.58/1] max-w-[38.3rem]",)}
                 >
-                    <div className="relative w-full h-full flex items-center justify-center">
+                    <span className="relative w-full h-full flex items-center justify-center">
 
                         {miniature ?
                             <>
@@ -84,11 +84,11 @@ const VideoWithDecoration = ({
                                 allowFullScreen
                             ></iframe>
                         }
-                    </div>
-                </div>
+                    </span>
+                </span>
                 <span className={`absolute top-[7%] -right-[6%] w-[49px] md:w-[98px] ${miniature ? "z-30" : "z-0"}`}>{triangle}</span>
-            </div>
-        </div>
+            </span>
+        </span>
     );
 };
 

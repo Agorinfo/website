@@ -4,7 +4,7 @@ export default async function getRelatedRessources(ressourceId: number) {
     const { API_URL, API_KEY } = process.env;
 
     const res = await fetch(
-        `${API_URL}/ressources?populate=*&filters[id][$ne]=${ressourceId}&pagination[pageSize]=3`,
+        `${API_URL}/ressources?populate=*&filters[id][$ne]=${ressourceId}&pagination[pageSize]=3&sort[1]=publishedAt:desc`,
         {
             cache: "no-store",
             headers: {
