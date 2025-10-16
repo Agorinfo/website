@@ -10,6 +10,7 @@ import RelatedRessources from "@/components/RelatedRessources";
 import ImageWithDecoration from "@/components/ImageWithDecoration";
 import CallToAction, {CallToActionRessource} from "@/components/CallToAction";
 import getGlobal from "@/actions/getGlobal";
+import VideoWithDecoration from "@/components/VideoWithDecoration";
 
 const RessourceContent = () => {
     const {slug} = useParams();
@@ -23,6 +24,27 @@ const RessourceContent = () => {
         queryFn: () => getGlobal(),
     });
     const ressource = data[0]?.attributes;
+
+    function extractText(node: React.ReactNode): string {
+        if (typeof node === 'string' || typeof node === 'number') {
+            return node.toString();
+        }
+
+        if (Array.isArray(node)) {
+            return node.map(extractText).join('');
+        }
+
+        if (React.isValidElement(node)) {
+            // 💡 Cas typique pour BlocksRenderer : texte dans props.text
+            if (typeof node.props?.text === 'string') {
+                return node.props.text;
+            }
+
+            return extractText(node.props.children);
+        }
+
+        return '';
+    }
 
     React.useEffect(() => {
         imageRenderCount.current = 0;
@@ -95,6 +117,30 @@ const RessourceContent = () => {
                                                 squareSize="large"
                                                 rotation={isEven ? 2 : 1}
                                             />
+                                        );
+                                    },
+                                    link: ({ children, url }) => {
+                                        console.log(children, url)
+                                        if (url.startsWith("https://www.youtube.com/embed/")) {
+                                            const videoId = url.split("/embed/")[1].split("?")[0];
+                                            const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                                            const legend = extractText(children);
+
+                                            return (
+                                                <VideoWithDecoration
+                                                    src={thumbnail}
+                                                    alt=""
+                                                    videoUrl={url}
+                                                    legend={legend}
+                                                />
+                                            );
+                                        }
+
+                                        // Sinon lien normal
+                                        return (
+                                            <a href={url} className="text-accent underline" target="_blank" rel="noopener noreferrer">
+                                                {children}
+                                            </a>
                                         );
                                     }
                                 }}

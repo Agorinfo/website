@@ -10,10 +10,11 @@ import RelatedServices from "@/sections/RelatedServices";
 import type {Metadata} from "next";
 import getGlobal from "@/actions/getGlobal";
 import getSolution from "@/actions/getSolution";
+import VideoWithDecoration from "@/components/VideoWithDecoration";
 
  async function getData(slug: string) {
     const {API_URL, API_KEY} = process.env
-    const res = await fetch(`${API_URL}/solutions?populate=brandImg,heroArchive.logo,heroArchive.informationCard.image,heroArchive.background,heroArchive.moduleList,reassurance.card,HeroPage.images,HeroPage.logo,HeroPage.content,cta,FeaturesReleased.details,featuresReleasedImg,newsletter,features,modules.features.activities,modules.features.details,modules.features.activities,solutionComp&filters%5Bslug%5D%5B%24eq%5D=${slug}`, {
+    const res = await fetch(`${API_URL}/solutions?populate=brandImg,heroArchive.logo,heroArchive.informationCard.image,heroArchive.background,heroArchive.moduleList,reassurance.card,HeroPage.images,HeroPage.logo,HeroPage.content,cta,video.thumbnail,FeaturesReleased.details,featuresReleasedImg,newsletter,features,modules.features.activities,modules.features.details,modules.features.activities,solutionComp&filters%5Bslug%5D%5B%24eq%5D=${slug}`, {
         cache: 'no-store',
         headers: {
             Authorization: `Bearer ${API_KEY}`
@@ -28,25 +29,25 @@ import getSolution from "@/actions/getSolution";
 }
 
 export const generateMetadata = async ({params}: {params : {slug: string}}): Promise<Metadata> => {
-    const {BACK_URL} = process.env;
+    const {BACK_URL, FRONT_URL} = process.env;
     const solution = await getSolution(params.slug)
     const global = await getGlobal();
     const metas = solution[0].attributes.metas
 
     return {
-        metadataBase: new URL(metas.canonicalUrl),
+        metadataBase: new URL(FRONT_URL + "/solutions/" + params.slug),
         title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
         description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
         openGraph: {
             title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
             siteName: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
             description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
-            url: metas.canonicalUrl,
+            url: FRONT_URL + "/solutions/" + params.slug,
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
         },
         twitter: {
             card: 'summary_large_image',
-            site: metas.canonicalUrl,
+            site: FRONT_URL + "/solutions/" + params.slug,
             title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
             description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
@@ -62,7 +63,8 @@ export const generateMetadata = async ({params}: {params : {slug: string}}): Pro
 const Solution = async ({params}: {params : {slug: string}}) => {
     const data = await getData(params.slug);
     const colors = createColorPalette(data[0].attributes.brandColor);
-
+    const backUrl = process.env.NEXT_PUBLIC_BACK_URL;
+    console.log(data[0].attributes.video)
     return (
         <>
             <HeroPage
@@ -81,6 +83,12 @@ const Solution = async ({params}: {params : {slug: string}}) => {
                 text={data[0].attributes.cta.text}
                 buttonClassName="text-white outline-none ring-accent-muted focus-visible:ring"
                 colors={colors}
+            />
+            <VideoWithDecoration
+                src={backUrl + data[0]?.attributes.video?.thumbnail.data.attributes.url}
+                alt={data[0]?.attributes.video?.thumbnail.data.attributes.alternativeText}
+                videoUrl={data[0]?.attributes.video?.url}
+                legend={data[0]?.attributes.video?.legend}
             />
             <SolutionFeatures
                 icon={data[0].attributes.icon}

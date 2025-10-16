@@ -37,8 +37,8 @@ const FeaturesReleased = ({data, image, colors}: FeatureReleasedProps) => {
                 ))}
             </div>
             <img
-                src={image ? backUrl + image.data.attributes.url : emptyImg.src}
-                alt={image.data.attributes ? image.data.attributes.alternativeText : ""}
+                src={image ? backUrl + image.data?.attributes.url : emptyImg.src}
+                alt={image.data && image.data.attributes ? image.data?.attributes.alternativeText : ""}
             />
         </div>
     );

@@ -24,25 +24,25 @@ import getGlobal from "@/actions/getGlobal";
 // }
 
 export const generateMetadata = async ({params}: {params : {slug: string}}): Promise<Metadata> => {
-    const {BACK_URL} = process.env;
+    const {BACK_URL, FRONT_URL} = process.env;
     const global = await getGlobal();
     const service = await getService(params.slug);
     const metas = service[0].attributes.metas
 
     return {
-        metadataBase: new URL(metas.canonicalUrl),
+        metadataBase: new URL(FRONT_URL + "/services/" + params.slug),
         title: metas.meta_title || "Agorinfo, éditeur de solution logicielles métier",
         description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
         openGraph: {
             title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
             siteName: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
             description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
-            url: metas.canonicalUrl,
+            url: FRONT_URL + "/services/" + params.slug,
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
         },
         twitter: {
             card: 'summary_large_image',
-            site: metas.canonicalUrl,
+            site: FRONT_URL + "/services/" + params.slug,
             title: metas?.meta_title || "Agorinfo, éditeur de solution logicielles métier",
             description: metas?.meta_description || "Solutions logicielles de gestion : logiviande, SILOS , LSA et Comptinnov. Découvrez nos services, conseils, formations pour votre solution logiciele de gestion.",
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
