@@ -71,7 +71,7 @@ const RessourceContent = () => {
                                 content={typeof ressource.content === "string" ? JSON.stringify(ressource.content) : ressource?.content}
                                 blocks={{
                                     paragraph: ({children}) =>
-                                        <p className="mb-8 text-gray-600 [&>strong]:text-featured">{children}</p>,
+                                        <p className="mb-8 text-gray-600 [&>strong]:text-featured leading-[1.375rem]">{children}</p>,
                                     list: ({children, format}) => {
                                             if(format === "ordered") {
                                                 return <ol className="list-decimal list-inside pb-12 text-gray-600">{children}</ol>

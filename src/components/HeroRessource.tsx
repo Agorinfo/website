@@ -39,7 +39,7 @@ const HeroRessource = () => {
                 <div>
                     <span className={"font-bold inline-block pb-6"}>{ressource?.category?.data.attributes.name}</span>
                     <h1 className={"text-h1 font-bold pb-12"}>{ressource?.title}</h1>
-                    <p>{ressource?.shortDescription}</p>
+                    <p className="whitespace-pre-line">{ressource?.shortDescription}</p>
                 </div>
                 <ImageWithDecoration
                     src={ressource?.featuredImage?.data?.attributes?.formats?.medium?.url
