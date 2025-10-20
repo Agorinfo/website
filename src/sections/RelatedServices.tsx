@@ -1,7 +1,6 @@
 import React from 'react';
 import RelatedCard from "@/components/RelatedCard";
 import {ModalButton} from "@/components/Button";
-import Modal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
 import {RelatedServicesType} from "@/utils/types";
 import getSolutions from "@/actions/getSolutions";
