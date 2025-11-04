@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --tiret : "\00002D";
+}
+
 .content-grid {
     --padding-inline: 6vw;
     --content-max-width: 80rem;

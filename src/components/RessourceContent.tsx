@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, {createContext, useContext} from 'react';
 import {BlocksRenderer} from "@strapi/blocks-react-renderer";
 import {useParams} from "next/navigation";
 import {useQuery} from "@tanstack/react-query";
@@ -8,9 +8,18 @@ import Loader from "@/components/Loader";
 import {ArrowLeft} from "@phosphor-icons/react";
 import RelatedRessources from "@/components/RelatedRessources";
 import ImageWithDecoration from "@/components/ImageWithDecoration";
-import CallToAction, {CallToActionRessource} from "@/components/CallToAction";
+import {CallToActionRessource} from "@/components/CallToAction";
 import getGlobal from "@/actions/getGlobal";
 import VideoWithDecoration from "@/components/VideoWithDecoration";
+import {createColorPalette} from "@/lib/createColorPalette";
+
+const ListFormatContext = createContext<"ordered" | "unordered" | null>(null);
+const useListFormat = () => useContext(ListFormatContext);
+
+type ListItemProps = {
+    children?: React.ReactNode;
+    format?: 'ordered' | 'unordered';
+};
 
 const RessourceContent = () => {
     const {slug} = useParams();
@@ -24,7 +33,8 @@ const RessourceContent = () => {
         queryFn: () => getGlobal(),
     });
     const ressource = data[0]?.attributes;
-
+    const colors = createColorPalette(ressource.category.data.attributes.color);
+    console.log(colors)
     function extractText(node: React.ReactNode): string {
         if (typeof node === 'string' || typeof node === 'number') {
             return node.toString();
@@ -50,6 +60,21 @@ const RessourceContent = () => {
         imageRenderCount.current = 0;
     }, [ressource?.content, slug]);
 
+    const ListItem = ({ children }: { children?: React.ReactNode }) => {
+        const format = useListFormat();
+
+        return (
+            <li
+                className={`pb-4 text-[1rem] ${
+                    format === "unordered"
+                        ? 'before:content-["-"] flex items-center'
+                        : ""
+                }`}
+            >
+                {children}
+            </li>
+        );
+    };
     if (isLoading || global.isLoading) return <Loader/>
 
     if (error || global.error) return <p>{error?.message}</p>
@@ -71,21 +96,21 @@ const RessourceContent = () => {
                                 content={typeof ressource.content === "string" ? JSON.stringify(ressource.content) : ressource?.content}
                                 blocks={{
                                     paragraph: ({children}) =>
-                                        <p className="mb-8 text-gray-600 [&>strong]:text-featured leading-[1.375rem]">{children}</p>,
-                                    list: ({children, format}) => {
-                                            if(format === "ordered") {
-                                                return <ol className="list-decimal list-inside pb-12 text-gray-600">{children}</ol>
-                                            } else {
-                                                return <ul className="list-disc list-inside pb-12 text-gray-600">{children}</ul>
-                                            }
+                                        <p className="mb-8 text-gray-600 leading-[1.375rem] whitespace-pre-line">{children}</p>,
+                                    list: ({ children, format }) => {
+                                        const Tag = format === "ordered" ? "ol" : "ul";
+                                        const className =
+                                            format === "ordered"
+                                                ? "list-decimal list-inside pb-12 text-gray-600"
+                                                : "[&>li]:flex [&>li]:items-center [&>li]:gap-2 pb-12 text-gray-600";
+
+                                        return (
+                                            <ListFormatContext.Provider value={format}>
+                                                <Tag className={className}>{children}</Tag>
+                                            </ListFormatContext.Provider>
+                                        );
                                     },
-                                    "list-item": ({children}) => (
-                                        <li
-                                            className={`flex items-center gap-2 pb-4 text-[1rem]`}
-                                        >
-                                            {children}
-                                        </li>
-                                    ),
+                                    "list-item": ListItem,
                                     heading: ({children, level}) => {
                                         switch (level) {
                                             case 1:
@@ -94,14 +119,14 @@ const RessourceContent = () => {
                                             case 2:
                                                 return <>
                                                     <h2
-                                                        className={"pb-8 text-h2 font-bold md:pb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}
+                                                        className={"pb-8 text-h2 text-[1.5rem] font-bold md:pb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}
                                                     </h2>
                                                 </>
                                             case 3:
                                             case 4:
                                             case 5:
                                             case 6:
-                                                return <h3 className="text-h3 pb-4">{children}</h3>
+                                                return <h3 className="text-h3 text-[1.25rem] pb-4">{children}</h3>
                                             default:
                                                 return <h1 className="text-h1 pb-4">{children}</h1>
                                         }
@@ -140,15 +165,14 @@ const RessourceContent = () => {
                                             );
                                         }
 
-                                        // Sinon lien normal
                                         return (
-                                            <a href={url} className="text-accent underline" target="_blank" rel="noopener noreferrer">
+                                            <a href={url} className="text-featured font-bold underline" target="_blank" rel="noopener noreferrer">
                                                 {children}
                                             </a>
                                         );
                                     },
                                     quote: ({children}) =>
-                                        <blockquote className="p-6 bg-accent-shine italic  [&>strong]:text-accent">{children}</blockquote>,
+                                        <blockquote style={{backgroundColor: colors.muted}} className="p-6 mb-6">« {children} »</blockquote>,
                                 }}
                             />
                         }

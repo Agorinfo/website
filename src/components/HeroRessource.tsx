@@ -33,7 +33,7 @@ const HeroRessource = () => {
                     background: `linear-gradient(180deg, ${colors.border} 65%, white 35%)`,
                 }}
             >
-                <div className="hidden md:block w-full h-full" style={{backgroundColor: colors.border}}/>
+                <div className="hidden md:block w-full h-full" style={{backgroundColor: colors.shadow}}/>
             </div>
             <div className="grid md:grid-cols-2 gap-[5.729vw] xl:gap-[3.5vw] py-8 md:py-16 lg:py-24">
                 <div>
