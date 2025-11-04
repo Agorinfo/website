@@ -10,7 +10,7 @@ const HeroExpertises = () => {
         queryKey: ["expertise"],
         queryFn: () => getExpertise(),
     })
-
+    console.log(expertises )
     if (isLoading) return <p><LoaderButton/></p>
 
     if (error) return <p>{error.message}</p>

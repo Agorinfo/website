@@ -64,7 +64,7 @@ const Content = ({teaser, content, label1, label2, url1, url2, headingClassName,
                     <>
                         <ModalButton
                             style={btn1Style}
-                            label="Réserver une démo"
+                            label={label1}
                             className={`btn ${btn1ClassName}`}
                             onMouseEnter={onMouseEnter}
                             onMouseLeave={onMouseLeave}
