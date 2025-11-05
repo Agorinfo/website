@@ -63,7 +63,7 @@ const RessourceContent = () => {
 
         return (
             <li
-                className={`pb-2 text-[1rem] ${
+                className={`text-[1rem] ${
                     format === "unordered"
                         ? 'before:content-["-"]'
                         : ""
@@ -99,8 +99,8 @@ const RessourceContent = () => {
                                         const Tag = format === "ordered" ? "ol" : "ul";
                                         const className =
                                             format === "ordered"
-                                                ? "list-decimal list-inside pb-12 text-gray-600"
-                                                : "[&>li]:flex [&>li]:items-start [&>li]:gap-2 pb-12 text-gray-600";
+                                                ? "list-decimal list-inside pb-4 text-gray-600 flex flex-col gap-2"
+                                                : "flex flex-col gap-2 [&>li]:flex [&>li]:items-start [&>li]:gap-2 pb-4 text-gray-600";
 
                                         return (
                                             <ListFormatContext.Provider value={format}>
