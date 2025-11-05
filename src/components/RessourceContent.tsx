@@ -94,7 +94,7 @@ const RessourceContent = () => {
                                 content={typeof ressource.content === "string" ? JSON.stringify(ressource.content) : ressource?.content}
                                 blocks={{
                                     paragraph: ({children}) =>
-                                        <p className="mb-8 text-gray-600 leading-[1.375rem] whitespace-pre-line">{children}</p>,
+                                        <p className="mb-4 text-gray-600 leading-[1.375rem] whitespace-pre-line">{children}</p>,
                                     list: ({ children, format }) => {
                                         const Tag = format === "ordered" ? "ol" : "ul";
                                         const className =
@@ -117,7 +117,7 @@ const RessourceContent = () => {
                                             case 2:
                                                 return <>
                                                     <h2
-                                                        className={"pb-8 text-[1.5rem] font-bold md:pb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}
+                                                        className={"pb-4 text-[1.5rem] [&>em]:text-featured [&>em]:not-italic"}>{children}
                                                     </h2>
                                                 </>
                                             case 3:
