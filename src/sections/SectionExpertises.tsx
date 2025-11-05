@@ -5,7 +5,7 @@ import getExpertise from "@/actions/getExpertise";
 import {useQuery} from "@tanstack/react-query";
 import Expertise from "@/components/Expertise";
 import ContentCard from "@/components/ContentCard";
-import CallToAction from "@/components/CallToAction";
+import {CallToActionRessource} from "@/components/CallToAction";
 import {ArrowLeft} from "@phosphor-icons/react";
 import {BlocksContent} from "@strapi/blocks-react-renderer";
 
@@ -66,12 +66,13 @@ const SectionExpertises = () => {
                     />
                 ))}
             </div>
-            <CallToAction
+            <CallToActionRessource
                 title={expertises.cta?.title}
                 text={expertises.cta?.text}
                 headingClassName='text-accent'
                 buttonClassName='btn-accent'
-                buttonLabel="En savoir plus"
+                buttonLabel="Télécharger le catalogue"
+                url={"https://api.agorinfo.fr/uploads/Catalogue_offres_techniques_b51409a7b5.pdf"}
                 noBg
             />
             <button className='text-featured my-12' onClick={() => window.history.back()}><ArrowLeft size={24}/>

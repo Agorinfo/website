@@ -34,7 +34,6 @@ const RessourceContent = () => {
     });
     const ressource = data[0]?.attributes;
     const colors = createColorPalette(ressource.category.data.attributes.color);
-    console.log(colors)
     function extractText(node: React.ReactNode): string {
         if (typeof node === 'string' || typeof node === 'number') {
             return node.toString();
@@ -45,7 +44,6 @@ const RessourceContent = () => {
         }
 
         if (React.isValidElement(node)) {
-            // 💡 Cas typique pour BlocksRenderer : texte dans props.text
             if (typeof node.props?.text === 'string') {
                 return node.props.text;
             }
@@ -65,13 +63,13 @@ const RessourceContent = () => {
 
         return (
             <li
-                className={`pb-4 text-[1rem] ${
+                className={`pb-2 text-[1rem] ${
                     format === "unordered"
-                        ? 'before:content-["-"] flex items-center'
+                        ? 'before:content-["-"]'
                         : ""
                 }`}
             >
-                {children}
+                <span>{children}</span>
             </li>
         );
     };
@@ -102,7 +100,7 @@ const RessourceContent = () => {
                                         const className =
                                             format === "ordered"
                                                 ? "list-decimal list-inside pb-12 text-gray-600"
-                                                : "[&>li]:flex [&>li]:items-center [&>li]:gap-2 pb-12 text-gray-600";
+                                                : "[&>li]:flex [&>li]:items-start [&>li]:gap-2 pb-12 text-gray-600";
 
                                         return (
                                             <ListFormatContext.Provider value={format}>
@@ -119,14 +117,14 @@ const RessourceContent = () => {
                                             case 2:
                                                 return <>
                                                     <h2
-                                                        className={"pb-8 text-h2 text-[1.5rem] font-bold md:pb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}
+                                                        className={"pb-8 text-[1.5rem] font-bold md:pb-12 [&>em]:text-featured [&>em]:not-italic"}>{children}
                                                     </h2>
                                                 </>
                                             case 3:
                                             case 4:
                                             case 5:
                                             case 6:
-                                                return <h3 className="text-h3 text-[1.25rem] pb-4">{children}</h3>
+                                                return <h3 className="text-[1.25rem] pb-4">{children}</h3>
                                             default:
                                                 return <h1 className="text-h1 pb-4">{children}</h1>
                                         }

@@ -7,7 +7,7 @@ import clsx from "clsx";
 import emptyImg from "@/assets/empty-img.png"
 import toast from "react-hot-toast";
 
-const CallToAction = ({title, text, headingClassName, buttonClassName, noBg}: CallToActionType) => {
+const CallToAction = ({title, text, headingClassName, buttonClassName, buttonLabel, noBg}: CallToActionType) => {
     return (
         <section
             className={`${noBg ? "" : "bg-gradient-to-b from-accent-shadow"} from-50% to-white to-50% py-12 full-width -mt-px`}>
@@ -17,7 +17,7 @@ const CallToAction = ({title, text, headingClassName, buttonClassName, noBg}: Ca
                     <h3 className={"text-h3 font-bold pb-2 " + headingClassName}>{title}</h3>
                     <p className="paragraph">{text}</p>
                 </div>
-                <ModalButton label={"Être recontacté par un conseiller"} className={"flex-1 btn " + buttonClassName}>
+                <ModalButton label={buttonLabel} className={"flex-1 btn " + buttonClassName}>
                     <ContactForm/>
                 </ModalButton>
             </div>
