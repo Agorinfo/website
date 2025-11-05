@@ -8,7 +8,7 @@ export default async function getAllRessources(pageSize: number = 99) {
 
     do {
         const res = await fetch(
-            `${API_URL}/ressources?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
+            `${API_URL}/ressources?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&&sort[1]=publishedAt:desc`,
             {
                 cache: "no-store",
                 headers: {

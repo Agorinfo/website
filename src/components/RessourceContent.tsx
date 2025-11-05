@@ -164,13 +164,13 @@ const RessourceContent = () => {
                                         }
 
                                         return (
-                                            <a href={url} className="text-featured font-bold underline" target="_blank" rel="noopener noreferrer">
+                                            <a href={url} className="text-featured font-bold" target="_blank" rel="noopener noreferrer">
                                                 {children}
                                             </a>
                                         );
                                     },
                                     quote: ({children}) =>
-                                        <blockquote style={{backgroundColor: colors.muted}} className="p-6 mb-6">« {children} »</blockquote>,
+                                        <blockquote style={{backgroundColor: colors.muted}} className="p-6 mb-6">{children}</blockquote>,
                                 }}
                             />
                         }
