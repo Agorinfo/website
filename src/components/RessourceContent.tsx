@@ -69,7 +69,7 @@ const RessourceContent = () => {
                         : ""
                 }`}
             >
-                <span>{children}</span>
+                <span className="whitespace-pre-line">{children}</span>
             </li>
         );
     };
@@ -99,7 +99,7 @@ const RessourceContent = () => {
                                         const Tag = format === "ordered" ? "ol" : "ul";
                                         const className =
                                             format === "ordered"
-                                                ? "list-decimal list-inside pb-4 text-gray-600 flex flex-col gap-2"
+                                                ? "list-decimal list-outside leading-1 pl-[1.2rem] pb-4 text-gray-600 flex flex-col gap-2"
                                                 : "flex flex-col gap-2 [&>li]:flex [&>li]:items-start [&>li]:gap-2 pb-4 text-gray-600";
 
                                         return (
