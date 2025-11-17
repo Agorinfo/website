@@ -17,7 +17,7 @@ const CallToAction = ({title, text, headingClassName, buttonClassName, buttonLab
                     <h3 className={"text-h3 font-bold pb-2 " + headingClassName}>{title}</h3>
                     <p className="paragraph">{text}</p>
                 </div>
-                <ModalButton label={buttonLabel} className={"flex-1 btn " + buttonClassName}>
+                <ModalButton label={buttonLabel || "Être recontacté par un conseiller"} className={"flex-1 btn " + buttonClassName}>
                     <ContactForm/>
                 </ModalButton>
             </div>
