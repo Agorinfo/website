@@ -8,7 +8,7 @@ export default async function getGlobal() {
             Authorization: `Bearer ${API_KEY}`
         }
     })
-
+    console.log(res)
     if (!res.ok) {
         throw new Error('Failed to fetch data')
     }

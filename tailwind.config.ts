@@ -123,7 +123,8 @@ const config: Config = {
                 check: 'url("/check.svg")',
             },
             backgroundImage: {
-                map: "linear-gradient(180deg, #EEF7FF 15.77%, rgba(220, 238, 255, 0.00) 100%)"
+                map: "linear-gradient(180deg, #EEF7FF 15.77%, rgba(220, 238, 255, 0.00) 100%)",
+                legend: "linear-gradient(180deg, rgba(24, 41, 10, 0.00) 62.91%, #663B8E 100%)"
             },
         },
     },

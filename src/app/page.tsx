@@ -18,20 +18,20 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     return {
         metadataBase: new URL(global?.canonical_url),
-        title: metas.meta_title || "Massalikulu'lum | Formateur en langue arabe",
-        description: metas?.meta_description || "L'institut Massalikul'ulum offre des cours d'arabe de haute qualité à différents niveaux, ainsi que des cours d'apprentissage du Coran ",
+        title: metas.meta_title || "Agoringo | Les progiciels pour toutes les entreprises agricoles",
+        description: metas?.meta_description || "Les progiciels pour toutes les entreprises agricoles",
         openGraph: {
-            title: metas?.meta_title || "Massalikulu'lum | Formateur en langue arabe",
-            siteName: metas?.meta_title || "Massalikulu'lum | Formateur en langue arabe",
-            description: metas?.meta_description || "L'institut Massalikul'ulum offre des cours d'arabe de haute qualité à différents niveaux, ainsi que des cours d'apprentissage du Coran ",
+            title: metas?.meta_title || "Agoringo | Les progiciels pour toutes les entreprises agricoles",
+            siteName: metas?.meta_title || "Agoringo | Les progiciels pour toutes les entreprises agricoles",
+            description: metas?.meta_description || "Les progiciels pour toutes les entreprises agricoles",
             url: global?.canonical_url,
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
         },
         twitter: {
             card: 'summary_large_image',
             site: global?.canonical_url,
-            title: metas?.meta_title || "Massalikulu'lum | Formateur en langue arabe",
-            description: metas?.meta_description || "L'institut Massalikul'ulum offre des cours d'arabe de haute qualité à différents niveaux, ainsi que des cours d'apprentissage du Coran ",
+            title: metas?.meta_title || "Agoringo | Les progiciels pour toutes les entreprises agricoles",
+            description: metas?.meta_description || "Les progiciels pour toutes les entreprises agricoles",
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
         },
         icons: {
