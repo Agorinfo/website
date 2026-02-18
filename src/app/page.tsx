@@ -15,14 +15,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
     const {BACK_URL} = process.env;
     const global = await getGlobal();
     const metas = global.metas
-
     return {
         metadataBase: new URL(global?.canonical_url),
-        title: metas.meta_title || "Agoringo | Les progiciels pour toutes les entreprises agricoles",
+        title: metas.meta_title || "Agorinfo | Les progiciels pour toutes les entreprises agricoles",
         description: metas?.meta_description || "Les progiciels pour toutes les entreprises agricoles",
         openGraph: {
-            title: metas?.meta_title || "Agoringo | Les progiciels pour toutes les entreprises agricoles",
-            siteName: metas?.meta_title || "Agoringo | Les progiciels pour toutes les entreprises agricoles",
+            title: metas?.meta_title || "Agorinfo | Les progiciels pour toutes les entreprises agricoles",
+            siteName: metas?.meta_title || "Agorinfo | Les progiciels pour toutes les entreprises agricoles",
             description: metas?.meta_description || "Les progiciels pour toutes les entreprises agricoles",
             url: global?.canonical_url,
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
@@ -30,7 +29,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
         twitter: {
             card: 'summary_large_image',
             site: global?.canonical_url,
-            title: metas?.meta_title || "Agoringo | Les progiciels pour toutes les entreprises agricoles",
+            title: metas?.meta_title || "Agorinfo | Les progiciels pour toutes les entreprises agricoles",
             description: metas?.meta_description || "Les progiciels pour toutes les entreprises agricoles",
             images: [`${BACK_URL}${metas?.shareImage?.data?.attributes.url}` || ""],
         },
