@@ -12,6 +12,7 @@ import {CallToActionRessource} from "@/components/CallToAction";
 import getGlobal from "@/actions/getGlobal";
 import VideoWithDecoration from "@/components/VideoWithDecoration";
 import {createColorPalette} from "@/lib/createColorPalette";
+import { ClickableImage } from "./ImageLightbox";
 
 const ListFormatContext = createContext<"ordered" | "unordered" | null>(null);
 const useListFormat = () => useContext(ListFormatContext);
@@ -34,6 +35,7 @@ const RessourceContent = () => {
     });
     const ressource = data[0]?.attributes;
     const colors = createColorPalette(ressource.category.data.attributes.color);
+
     function extractText(node: React.ReactNode): string {
         if (typeof node === 'string' || typeof node === 'number') {
             return node.toString();
@@ -58,7 +60,7 @@ const RessourceContent = () => {
         imageRenderCount.current = 0;
     }, [ressource?.content, slug]);
 
-    const ListItem = ({ children }: { children?: React.ReactNode }) => {
+    const ListItem = ({children}: { children?: React.ReactNode }) => {
         const format = useListFormat();
 
         return (
@@ -95,7 +97,7 @@ const RessourceContent = () => {
                                 blocks={{
                                     paragraph: ({children}) =>
                                         <p className="mb-4 text-gray-600 leading-[1.375rem] whitespace-pre-line">{children}</p>,
-                                    list: ({ children, format }) => {
+                                    list: ({children, format}) => {
                                         const Tag = format === "ordered" ? "ol" : "ul";
                                         const className =
                                             format === "ordered"
@@ -136,18 +138,25 @@ const RessourceContent = () => {
                                         const isEven = index % 2 === 1;
 
                                         return (
-                                            <ImageWithDecoration
-                                                src={image.url}
-                                                alt={image.alternativeText || ""}
-                                                legend={image.caption}
-                                                layout="landscape"
-                                                decorationPosition={isEven ? "landscapeTwo" : "landscapeOne"}
-                                                squareSize="large"
-                                                rotation={isEven ? 2 : 1}
-                                            />
+                                            <>
+                                                {image.caption !== "no-border" ?
+                                                    <ImageWithDecoration
+                                                        src={image.url}
+                                                        alt={image.alternativeText || ""}
+                                                        legend={image.caption}
+                                                        layout="landscape"
+                                                        decorationPosition={isEven ? "landscapeTwo" : "landscapeOne"}
+                                                        squareSize="large"
+                                                        rotation={isEven ? 2 : 1}
+                                                    />
+                                                    :
+                                                    // <img className="max-w-[36rem] aspect-video mx-auto" src={image.url} alt={image.alternativeText || ""}/>
+                                                    <ClickableImage className="max-w-[36rem] aspect-video mx-auto" src={image.url} alt={image.alternativeText || ""} />
+                                                }
+                                            </>
                                         );
                                     },
-                                    link: ({ children, url }) => {
+                                    link: ({children, url}) => {
                                         if (url.startsWith("https://www.youtube.com/embed/")) {
                                             const videoId = url.split("/embed/")[1].split("?")[0];
                                             const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
@@ -164,13 +173,15 @@ const RessourceContent = () => {
                                         }
 
                                         return (
-                                            <a href={url} className="text-featured font-bold" target="_blank" rel="noopener noreferrer">
+                                            <a href={url} className="text-featured font-bold" target="_blank"
+                                               rel="noopener noreferrer">
                                                 {children}
                                             </a>
                                         );
                                     },
                                     quote: ({children}) =>
-                                        <blockquote style={{backgroundColor: colors.muted}} className="p-6 mb-6">{children}</blockquote>,
+                                        <blockquote style={{backgroundColor: colors.muted}}
+                                                    className="p-6 mb-6">{children}</blockquote>,
                                 }}
                             />
                         }
