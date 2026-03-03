@@ -151,7 +151,7 @@ const RessourceContent = () => {
                                                     />
                                                     :
                                                     // <img className="max-w-[36rem] aspect-video mx-auto" src={image.url} alt={image.alternativeText || ""}/>
-                                                    <ClickableImage className="max-w-[36rem] aspect-video mx-auto" src={image.url} alt={image.alternativeText || ""} />
+                                                    <ClickableImage className="max-w-full aspect-video mx-auto object-contain" src={image.url} alt={image.alternativeText || ""} />
                                                 }
                                             </>
                                         );
