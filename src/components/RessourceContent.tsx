@@ -89,7 +89,7 @@ const RessourceContent = () => {
                         <ArrowLeft size={24}/>
                     </button>
                 </div>
-                <div className="flex flex-col lg:flex-row justify-between">
+                <div className="flex flex-col lg:flex-row justify-between gap-[2.5vw]">
                     <div className="max-w-[45rem] w-full">
                         {ressource?.content &&
                             <BlocksRenderer
@@ -151,7 +151,7 @@ const RessourceContent = () => {
                                                     />
                                                     :
                                                     // <img className="max-w-[36rem] aspect-video mx-auto" src={image.url} alt={image.alternativeText || ""}/>
-                                                    <ClickableImage className="max-w-full aspect-video mx-auto object-contain" src={image.url} alt={image.alternativeText || ""} />
+                                                    <ClickableImage className="max-w-full aspect-video mx-auto object-contain px-4" src={image.url} alt={image.alternativeText || ""} />
                                                 }
                                             </>
                                         );
