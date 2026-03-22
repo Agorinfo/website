@@ -10,7 +10,7 @@ import RelatedServices from "@/sections/RelatedServices";
 import type {Metadata} from "next";
 import getGlobal from "@/actions/getGlobal";
 import getSolution from "@/actions/getSolution";
-import VideoWithDecoration from "@/components/VideoWithDecoration";
+import VideoWithDecoration from "../../../../../wenegoce/src/components/VideoWithDecoration";
 
  async function getData(slug: string) {
     const {API_URL, API_KEY} = process.env

@@ -10,9 +10,9 @@ import RelatedRessources from "@/components/RelatedRessources";
 import ImageWithDecoration from "@/components/ImageWithDecoration";
 import {CallToActionRessource} from "@/components/CallToAction";
 import getGlobal from "@/actions/getGlobal";
-import VideoWithDecoration from "@/components/VideoWithDecoration";
 import {createColorPalette} from "@/lib/createColorPalette";
 import { ClickableImage } from "./ImageLightbox";
+import VideoWithDecoration from "@/components/VideoWithDecoration";
 
 const ListFormatContext = createContext<"ordered" | "unordered" | null>(null);
 const useListFormat = () => useContext(ListFormatContext);
@@ -170,6 +170,20 @@ const RessourceContent = () => {
                                                     legend={legend}
                                                 />
                                             );
+                                        } else if (url.startsWith("https://www.youtube.com/shorts/")) {
+                                            const videoId = url.split("/shorts/")[1].split("?")[0];
+                                            const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                                            const legend = extractText(children);
+                                            const shortUrl = `https://www.youtube.com/embed/${videoId}`;
+
+                                            return (
+                                                <VideoWithDecoration
+                                                    src={thumbnail}
+                                                    alt=""
+                                                    videoUrl={shortUrl}
+                                                    legend={legend}
+                                                />
+                                            )
                                         }
 
                                         return (

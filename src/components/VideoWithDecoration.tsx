@@ -7,13 +7,15 @@ type VideoWithDecorationType = {
     alt: string;
     videoUrl: string;
     legend?: string | null | undefined;
+    short?: boolean;
 }
 
 const VideoWithDecoration = ({
                                  src,
                                  alt,
                                  videoUrl,
-                                 legend
+                                 legend,
+                                 short
                              }: VideoWithDecorationType) => {
     const [miniature, setMiniature] = React.useState(true);
     const polygon =
@@ -29,29 +31,33 @@ const VideoWithDecoration = ({
 
     if (!src || !videoUrl || !legend) return null;
     return (
-        <span className={clsx("block mb-24")}
+        <span className={clsx("block mt-12 mb-24")}
         >
-            <span className="relative block mx-auto max-w-[38.3rem] aspect-[1.64/1] md:aspect-[1.58/1]">
+            <span className={clsx("relative block mx-auto max-w-[38.3rem] max-h-[75vh]",
+                short ? "aspect-[9/16]" : "aspect-[1.64/1] md:aspect-[1.58/1]")}>
                 <span
                     className={`absolute -bottom-[14%] -left-[7%] md:-left-[11%] w-1/3 md:w-[229px]`}>{polygon}</span>
                 <span
-                    className={clsx("relative block w-full bg-white shadow-slide rounded-2xl p-3 z-10 aspect-[1.64/1] md:aspect-[1.58/1] max-w-[38.3rem]",)}
+                    className={clsx("relative block w-full bg-white shadow-slide rounded-2xl p-3 z-10 max-w-[38.3rem]",
+                        short ? "aspect-[9/16]" : "aspect-[1.64/1] md:aspect-[1.58/1]")}
                 >
                     <span className="relative w-full h-full flex items-center justify-center">
 
                         {miniature ?
                             <>
                                 <img
-                                    className="absolute inset-0 z-10 w-full h-full rounded-lg"
+                                    className="absolute inset-0 z-10 w-full h-full rounded-lg object-cover"
                                     src={src}
                                     alt={alt}
                                 />
                                 <button
                                     onClick={() => setMiniature(false)}
                                     aria-label="afficher la vidéo"
-                                    className="absolute z-20 max-w-[16.5rem] w-[75%] md:w-[45%] max-h-full flex flex-col items-center justify-center rounded-[0.9375rem] gap-4 px-3 md:px-6 py-4 md:py-10 bg-white/80 cursor-pointer">
+                                    className={clsx("absolute z-20 max-w-[16.5rem] w-[75%] md:w-[45%] max-h-full flex flex-col items-center justify-center rounded-[0.9375rem] gap-4 px-3 md:px-6 py-4 md:py-10 cursor-pointer",
+                                        short ? "" : "bg-white/80")}>
                                     <span
-                                        className="flex items-center justify-center size-[2.8125rem] md:size-[5.125rem] bg-accent rounded-[0.625rem] md:rounded-[0.9375rem]">
+                                        className={clsx("flex items-center justify-center size-[2.8125rem] md:size-[5.125rem] rounded-[0.625rem] md:rounded-[0.9375rem]",
+                                        short ? "bg-black/30" : "bg-accent")}>
                                         <span className="w-[20px] md:w-[41px]">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -66,15 +72,16 @@ const VideoWithDecoration = ({
                                         </svg>
                                         </span>
                                     </span>
-                                    <span
-                                        className="inline-block p-2 w-full font-bold text-accent-shadow">
+                                    {!short &&
+                                        <span
+                                            className="inline-block p-2 w-full font-bold text-accent-shadow">
                                         {legend}
-                                    </span>
+                                    </span>}
                                 </button>
                             </>
                             :
                             <iframe
-                                className="relative max-w-[38.3rem] w-full aspect-[1.64/1] md:aspect-[1.58/1] object-cover object-center rounded-xl bg-white border border-grayscale-lighter"
+                                className={`relative max-w-[38.3rem] w-full ${short ? "aspect-[9/16]" : "aspect-[1.64/1] md:aspect-[1.58/1]"} object-cover object-center rounded-xl bg-white border border-grayscale-lighter`}
                                 width="100%"
                                 height="100%"
                                 src={videoUrl}
@@ -86,7 +93,8 @@ const VideoWithDecoration = ({
                         }
                     </span>
                 </span>
-                <span className={`absolute top-[7%] -right-[6%] w-[49px] md:w-[98px] ${miniature ? "z-30" : "z-0"}`}>{triangle}</span>
+                <span
+                    className={`absolute top-[7%] -right-[6%] w-[49px] md:w-[98px] ${miniature ? "z-30" : "z-0"}`}>{triangle}</span>
             </span>
         </span>
     );
