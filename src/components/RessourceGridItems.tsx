@@ -62,8 +62,6 @@ const RessourceGridItems = () => {
                 }}
                 activeCategory={activeCategory}
             />
-
-
                 <motion.div
                     layout
                     className="grid sm:grid-cols-2 gap-6 lg:grid-cols-3 md:gap-12 xl:gap-16"
@@ -117,8 +115,7 @@ const RessourceGridItems = () => {
                 )
             }
         </section>
-    )
-        ;
+    );
 };
 
 export default RessourceGridItems;

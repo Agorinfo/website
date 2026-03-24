@@ -182,6 +182,7 @@ const RessourceContent = () => {
                                                     alt=""
                                                     videoUrl={shortUrl}
                                                     legend={legend}
+                                                    short
                                                 />
                                             )
                                         }
