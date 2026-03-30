@@ -172,7 +172,7 @@ const RessourceContent = () => {
                                             );
                                         } else if (url.startsWith("https://www.youtube.com/shorts/")) {
                                             const videoId = url.split("/shorts/")[1].split("?")[0];
-                                            const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                                            const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
                                             const legend = extractText(children);
                                             const shortUrl = `https://www.youtube.com/embed/${videoId}`;
 
