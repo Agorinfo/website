@@ -159,7 +159,7 @@ const RessourceContent = () => {
                                     link: ({children, url}) => {
                                         if (url.startsWith("https://www.youtube.com/embed/")) {
                                             const videoId = url.split("/embed/")[1].split("?")[0];
-                                            const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                                            const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
                                             const legend = extractText(children);
 
                                             return (
