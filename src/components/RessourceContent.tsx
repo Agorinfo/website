@@ -102,7 +102,7 @@ const RessourceContent = () => {
                                         const className =
                                             format === "ordered"
                                                 ? "list-decimal list-outside leading-1 pl-[1.2rem] pb-4 text-gray-600 flex flex-col gap-2"
-                                                : "flex flex-col gap-2 [&>li]:flex [&>li]:items-start [&>li]:gap-2 pb-4 text-gray-600";
+                                                : "flex flex-col gap-2 [&>ul]:pl-4 [&>li]:flex [&>li]:items-start [&>li]:gap-2 pb-4 text-gray-600";
 
                                         return (
                                             <ListFormatContext.Provider value={format}>
