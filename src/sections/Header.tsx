@@ -25,6 +25,7 @@ const Header = () => {
     })
 
     const logo = global.data?.logo.data?.attributes.url
+    const alt = global.data?.logo.data?.attributes.alternativeText
     if(isLoading) return  <Loader />
 
     if(error) return <p>{error.message}</p>
@@ -32,7 +33,7 @@ const Header = () => {
     return (
         <header className="sticky top-0 bg-white z-[999] border-b border-greyscale-lightest shadow-nav">
             <div className="flex items-center justify-between py-6 relative max-w-screen-xl mx-auto px-4 md:px-8 xl:px-0">
-                <Link className="w-[200px]" href="/"><img className="w-full h-full object-contain" src={logo ? backUrl + logo : emptyImg.src} alt="WeNégoce"/></Link>
+                <Link className="w-[200px]" href="/"><img className="w-full h-full object-contain" src={logo ? backUrl + logo : emptyImg.src} alt={alt ?? ""}/></Link>
                 <Nav navItems={data.navItems} isOpen={isOpen} setIsOpen={setIsOpen} />
                 <ModalButton label={"Nous contacter"} className="btn btn-accent hidden lg:inline-flex">
                     <ContactForm />
